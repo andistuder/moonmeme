@@ -20,12 +20,12 @@ now = new Date();
 
 
 function compute() {
-      var y = parseFloat(2014)
-   var m = parseFloat(6)
-   var d = parseFloat(24)
-   var uh = parseFloat(23)
-   var um = parseFloat(23)
-   var us = parseFloat(32)
+   var y = parseFloat(now.getFullYear())
+   var m = parseFloat(now.getMonth())
+   var d = parseFloat(now.getDay())
+   var uh = parseFloat(now.getHours())
+   var um = parseFloat(now.getMinutes())
+   var us = parseFloat(now.getSeconds())
 
    var extra = 100.0*y + m - 190002.5
    var rjd = 367.0*y
@@ -83,13 +83,6 @@ function phase(t) {
    return mphase
 }
 
-<!-- Begin
-function popUp(URL) {
-day = new Date();
-id = day.getTime();
-eval("page" + id + " = window.open(URL, '" + id + "', 'toolbar=0,scrollbars=1,location=0,statusbar=0,menubar=0,resizable=1,width=452,height=150,left=500,top=180');");
-}
-// End -->
 </SCRIPT>
 
 <SCRIPT LANGUAGE="JavaScript"><!--
@@ -101,11 +94,12 @@ function startTimer() {
 }
 
 function refresh() {
-    window.location.href = 'index.php';
+    window.location.href = 'index.html';
 }
 
 startTimer();
-//--></SCRIPT>
+//-->
+</SCRIPT>
 
 </head>
 
@@ -225,25 +219,6 @@ startTimer();
 		compute()
 		// -->
 	</script>
-
-<!--script>
-function foobar_cont(){
- 
-
-
-  document.getElementById("p2").style.color = "blue";
-  document.getElementById("p2").style.fontFamily = "Arial";
-  document.getElementById("p2").style.fontSize = "larger";
-};
-
-function sleep(millis, callback) {
-    setTimeout(function()
-            { callback(); }
-    , millis);
-}
-
-sleep(3000, foobar_cont);
-</script-->
 
 <div class="share-box">
 </div>
