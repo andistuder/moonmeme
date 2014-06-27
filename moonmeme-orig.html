@@ -1,0 +1,232 @@
+<html>
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>A Moon Project</title>
+<meta name="description"
+	content="In Moonmeme, the artist reveals her concept to write on the Moon from the Earth using a laser beam. The word SHE is projected onto the surface of the moon, the meaning of this word being gradually transformed as the Moon moves through its phases." />
+<meta name="keywords"
+	content="Liliane Lijn, Art, Sculpture, Video, Artist, London" />
+<meta name="author"
+	content="Richard Wilding http://www.richardwilding.com" />
+<meta http-equiv="Cache-Control" content="no-cache">
+<meta http-equiv="Pragma" content="no-cache">
+
+<SCRIPT LANGUAGE="JavaScript">
+<!-- Hide script from old browsers
+
+
+now = new Date();
+
+
+function compute() {
+      var y = parseFloat(2014)
+   var m = parseFloat(6)
+   var d = parseFloat(24)
+   var uh = parseFloat(23)
+   var um = parseFloat(23)
+   var us = parseFloat(32)
+
+   var extra = 100.0*y + m - 190002.5
+   var rjd = 367.0*y
+   rjd -= Math.floor(7.0*(y+Math.floor((m+9.0)/12.0))/4.0)
+   rjd += Math.floor(275.0*m/9.0)
+   rjd += d
+   rjd += (uh + (um + us/60.0)/60.)/24.0
+   rjd += 1721013.5
+   rjd -= 0.5*extra/Math.abs(extra)
+   rjd += 0.5
+   result = rjd
+   phase = phase(rjd)
+}
+
+function phase(t) {
+
+   l0 = 318.351648
+   P0 = 36.340410
+   N0 = 318.510107
+
+   omegabarg = 282.768422
+   epsilong = 279.403303
+   e_sun = 0.016713
+
+   D = t-2447891.5+55/86400
+   l = 13.1763966*D+l0
+
+
+   M_sun = 360/365.242191*D+epsilong-omegabarg
+   v = M_sun+360/Math.PI*e_sun*Math.sin(0.017453293*M_sun)
+
+   lambda_sun = v+omegabarg
+   C = l-lambda_sun
+
+
+   M_moon = l-0.1114041*D-P0
+   Ev = 1.2739*Math.sin(0.017453293*(2*C-M_moon))
+   Ae = 0.1858*Math.sin(0.017453293*M_sun)
+   A3 = 0.37*Math.sin(0.017453293*M_sun)
+
+   M_moon1 = M_moon+Ev-Ae-A3
+   Ec = 6.2886*Math.sin(0.017453293*M_moon1)
+   A4 = 0.214*Math.sin(0.017453293*2*M_moon1)
+   l1 = l+Ev+Ec-Ae+A4
+   V = 0.6583*Math.sin(0.017453293*2*(l1-lambda_sun))
+   l2 = l1+V
+
+   moon_phase = l2-lambda_sun
+   mphase = (moon_phase-360*Math.floor(moon_phase/360))
+
+   // updates image
+   newsrc="moon-"+Math.round(mphase/13.846154)+".jpg"
+   document.moonpic.src=newsrc
+
+   return mphase
+}
+
+<!-- Begin
+function popUp(URL) {
+day = new Date();
+id = day.getTime();
+eval("page" + id + " = window.open(URL, '" + id + "', 'toolbar=0,scrollbars=1,location=0,statusbar=0,menubar=0,resizable=1,width=452,height=150,left=500,top=180');");
+}
+// End -->
+</SCRIPT>
+
+<SCRIPT LANGUAGE="JavaScript"><!--
+function startTimer() {
+    var now = new Date();
+    var minutes = now.getMinutes();
+    var seconds = now.getSeconds();
+    setTimeout('refresh()',(((30 - (minutes % 30) - ((seconds>0)?1:0)) * 60) + (60 - seconds)) * 1000);
+}
+
+function refresh() {
+    window.location.href = 'index.php';
+}
+
+startTimer();
+//--></SCRIPT>
+
+</head>
+
+<body bgcolor="#000000">
+	<table height="100%" border="0" align="center" cellspacing="0"
+		cellpadding="0">
+
+		<tr height"90%">
+		<td align="center" colspan="2"><img src="moon-12.jpg" height="640" width="640" name=moonpic align="center"></td>
+		</tr>
+
+		<tr height="50">
+			<td valign="bottom" height="100" align="bottom"><OBJECT
+					CLASSID="clsid:02BF25D5-8C17-4B23-BC80-D3488ABDDC6B" WIDTH="50"
+					HEIGHT="17" CODEBASE="http://www.apple.com/qtactivex/qtplugin.cab">
+					<PARAM name="SRC" VALUE="she.mov">
+					<PARAM name="AUTOPLAY" VALUE="true">
+					<PARAM name="CONTROLLER" VALUE="true">
+					<PARAM name="LOOP" VALUE="true">
+					<PARAM name="HIDDEN" VALUE="false">
+					<EMBED SRC="she.mov" WIDTH="50" HEIGHT="17" LOOP="true"
+						AUTOPLAY="true" CONTROLLER="false" hidden="true"
+						PLUGINSPAGE="http://www.apple.com/quicktime/download/">
+					</EMBED>
+				</OBJECT>
+
+				<TABLE BORDER=0 width="500" bgcolor="#000">
+					<FORM NAME="timedate" ACTION="" METHOD="GET">
+						<TR>
+							<td><img src="spacepix.gif" border="0">
+							</td>
+							<TD><DIV ALIGN=CENTER>
+									<tt>
+										<font face="Verdana" size="1" bold color="#cccccc"> Year </font>
+									</tt>
+								</DIV>
+							</TD>
+							<TD><DIV ALIGN=CENTER>
+									<tt>
+										<font face="Verdana" size="1" bold color="#cccccc"> Month </font>
+									</tt>
+								</DIV>
+							</TD>
+							<TD><DIV ALIGN=CENTER>
+									<tt>
+										<font face="Verdana" size="1" bold color="#cccccc"> Day </font>
+									</tt>
+								</DIV>
+							</TD>
+							<td><img src="spacepix.gif" border="0">
+							</td>
+							<TD><DIV ALIGN=CENTER>
+									<tt>
+										<font face="Verdana" size="1" bold color="#cccccc"> Hrs </font>
+									</tt>
+								</DIV>
+							</TD>
+							<TD><DIV ALIGN=CENTER>
+									<tt>
+										<font face="Verdana" size="1" bold color="#cccccc"> Min </font>
+									</tt>
+								</DIV>
+							</TD>
+							<TD><DIV ALIGN=CENTER>
+									<tt>
+										<font face="Verdana" size="1" bold color="#cccccc"> Sec </font>
+									</tt>
+								</DIV>
+							</TD>
+							<td></td>
+
+						</tr>
+
+						<tr>
+							<td><img src="spacepix.gif" border="0">
+							</td>
+							<TD><INPUT TYPE=text NAME="year" SIZE=6 VALUE="2014"></TD>
+							<TD><INPUT TYPE=text NAME="month" SIZE=5 VALUE="6"></TD>
+							<TD><INPUT TYPE=text NAME="day" SIZE=3 VALUE="24"></TD>
+							<td><img src="spacepix.gif" border="0">
+							</td>
+							<TD><INPUT TYPE=text NAME="uth" SIZE=3 VALUE="23"></TD>
+							<TD><INPUT TYPE=text NAME="utm" SIZE=3 VALUE="23"></TD>
+							<TD><INPUT TYPE=text NAME="uts" SIZE=3 VALUE="32"></TD>
+							<!--  <td align=right width="100"><img src="spacepix.gif" border="0"><font face="Verdana" size="1" bold color="#cccccc">Phase:</font></td><TD><INPUT TYPE=text READONLY NAME="phase" value="2"SIZE=12></td> -->
+							<!--   <td align=right width="200"><img src="spacepix.gif" border="0"><font face="Verdana" size="1" bold color="#cccccc">Julian Date:</font></td><td><INPUT TYPE=text readonly NAME="result" value="3" SIZE=12> </TD> -->
+							<td><INPUT TYPE=submit NAME="go" VALUE="go" SIZE=3></td>
+						</TR>
+				
+				</TABLE>
+				</form></td>
+			<td>
+
+				<table height="100" border="0">
+					<tr height="30">
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td><font face="Verdana" size="1" bold color="#cccccc">Lunar Tales:</font></td>
+                        <td ALIGN="TOP"><br />
+                            <audio controls loop >
+                                <source src="story.mp3" type="audio/mp3">
+                            </audio>
+                        </td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	
+	</table>
+	</form>
+
+
+	<SCRIPT language="JavaScript"><!--
+compute()
+// --></script>
+
+<div class="share-box">
+</div>
+
+</body>
+</html>
