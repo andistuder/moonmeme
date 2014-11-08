@@ -83,7 +83,7 @@ function startTimer() {
     var now = new Date();
     var minutes = now.getMinutes();
     var seconds = now.getSeconds();
-    setTimeout(refresh, (((30 - (minutes % 30) - ((seconds > 0) ? 1 : 0)) * 60) + (60 - seconds)) * 1000);
+    setTimeout(refresh, (((15 - (minutes % 15) - ((seconds > 0) ? 1 : 0)) * 60) + (60 - seconds)) * 1000);
 }
 
 function refresh() {
@@ -112,8 +112,8 @@ function refresh() {
     </script>
 
     <audio autoplay>
-      <source src="she.mov" type="audio/mov">
       <source src="she.mp3" type="audio/mpeg">
+      <source src="she.mov" type="audio/mov">
     </audio>
 
 <div class="share-box">
