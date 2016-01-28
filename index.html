@@ -52,7 +52,7 @@ function phase(t) {
     var mphase = (moon_phase - 360 * Math.floor(moon_phase / 360));
 
     // updates image
-    var newsrc = "moon-" + Math.round(mphase / 13.846154) + ".jpg";
+    var newsrc = "images/moon-" + Math.round(mphase / 13.846154) + ".jpg";
     document.moonpic.src = newsrc;
 
     return mphase;
@@ -99,7 +99,7 @@ function refresh() {
 		cellpadding="0">
 
 		<tr height"100%">
-		<td align="center" colspan="2"><img src="moon-12.jpg" height="640" width="640" name=moonpic align="center"></td>
+		<td align="center" colspan="2"><img src="images/moon-12.jpg" height="640" width="640" name=moonpic align="center"></td>
 		</tr>
 
 	</table>
