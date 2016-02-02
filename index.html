@@ -80,10 +80,10 @@ function compute() {
 }
 
 function startTimer() {
-    var now = new Date();
-    var minutes = now.getMinutes();
-    var seconds = now.getSeconds();
-    setTimeout(refresh, (((15 - (minutes % 15) - ((seconds > 0) ? 1 : 0)) * 60) + (60 - seconds)) * 1000);
+    var minutes = 7;
+    var seconds = 48;
+    var timeout_sec = 7;
+    setTimeout(refresh, (((minutes * 60) + seconds + timeout_sec) * 1000));
 }
 
 function refresh() {
@@ -112,7 +112,7 @@ function refresh() {
     </script>
 
     <audio autoplay>
-      <source src="audio/she.wav" type="audio/wav">
+      <source src="audio/story.wav" type="audio/wav">
     </audio>
 
 <div class="share-box">
