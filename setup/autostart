@@ -1,0 +1,8 @@
+@lxpanel --profile LXDE
+@pcmanfm --desktop --profile LXDE
+#@xscreensaver -no-splash
+@xset s off
+@xset -dpms
+@xset s noblank
+@unclutter -idle 0 -root
+@midori -e Fullscreen -a /home/pi/Documents/moonmeme/index.html
