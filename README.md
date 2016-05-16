@@ -24,6 +24,10 @@ cd to folder with source files and run
 ```
 
 ### Audio
+
+Set in `raspi-config` or edit `/bin/config.txt`
+
+More details in
 https://www.raspberrypi.org/documentation/configuration/audio-config.md
 
 ### Real Time Clock
