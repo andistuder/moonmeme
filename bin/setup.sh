@@ -1,4 +1,5 @@
-#!/bin/sh
+#!/bin/bash
+set -e
 
 echo 'installing midori and unclutter'
 sudo apt-get update
