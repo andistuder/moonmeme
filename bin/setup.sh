@@ -20,4 +20,4 @@ echo 'dtparam=i2c_arm=on'
 echo 'update autostart'
 cat ./setup/autostart >> ~/.config/lxsession/LXDE-pi/autostart
 
-echo 'now reboot!'
+echo 'NOW reboot, and then run setup-rtc.sh'
