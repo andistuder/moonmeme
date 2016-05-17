@@ -3,9 +3,7 @@ set -e
 
 sudo modprobe rtc-ds1307
 
-sudo bash
-echo ds1307 0x68 > /sys/class/i2c-adapter/i2c-1/new_device
-exit
+echo 'ds1307 0x68' | sudo tee -a /sys/class/i2c-adapter/i2c-1/new_device
 echo HWCLOCK: $(sudo hwclock -r)
 echo DATE: $(date)
 sudo hwclock -w
