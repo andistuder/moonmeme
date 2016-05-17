@@ -12,34 +12,22 @@ This project is an adaptation of Liliane Lijn's [Moonmeme](http://www.lilianelij
 in raspi-config
 - set to boot to graphic user interface
 
-full screen mode, run in terminal:
-
-```
-sudo apt-get update
-apt-get install midori
-apt-get install unclutter
-```
-
-edit ~/.config/lxsession/LXDE-pi/autostart
-
-```
-@lxpanel --profile LXDE
-@pcmanfm --desktop --profile LXDE
-#@xscreensaver -no-splash
-@xset s off
-@xset -dpms
-@xset s noblank
-@unclutter -idle 0 -root
-@midori -e Fullscreen -a /home/pi/Documents/moonmeme/index.html
-```
-
 get source files
 
 ```
 git clone https://github.com/andistuder/moonmeme.git /home/pi/Documents/moonmeme
 ```
+cd to folder with source files and run
+
+```
+./bin/setup.sh
+```
 
 ### Audio
+
+Set in `raspi-config` or edit `/bin/config.txt`
+
+More details in
 https://www.raspberrypi.org/documentation/configuration/audio-config.md
 
 ### Real Time Clock
