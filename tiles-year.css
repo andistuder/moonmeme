@@ -1,0 +1,31 @@
+body {
+    /*background-image: url("images/moon-22.jpg"), url("images/moon-12.jpg");*/
+    /*background-repeat: repeat;*/
+    background-color: black;
+    color: white;
+}
+
+.moon {
+  float: left;
+  width: 40px;
+  height: 56px;
+  background-position: 2px 12px;
+  background-size: 36px 36px;
+  background-repeat: no-repeat;
+
+}
+
+.name {
+  float: left;
+  width: 88px;
+  height: 40px;
+  color: #999;
+  font-family: arial, sans-serif;
+  font-size: 12px;
+  padding-top: 16px;
+  padding-left: 12px;
+}
+
+.clearfix {
+  clear: both;
+}

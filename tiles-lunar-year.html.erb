@@ -1,0 +1,24 @@
+
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="tiles-year.css">
+
+</head>
+<body>
+
+  <%
+
+  names = %w(Modesta Jena Randal Lorilee Diego Cecile Kit Reena Vincenzo Jeana Jeraldine Gigi Keely Rosalee Nila Roselee Dave Arnoldo Vera Holli Hans Claudio Thelma Waylon Joey Jacquelyn Trang Elin Hugo Zelma Brittaney Milda Cristine Coleen Rodolfo Bret Bernadine Kasandra Chris Audry Shona Erick Nancee Ross Shirlene Dick Christinia Clark Alesha Daisy Jasper Ernestina Derick Amy Mireille Keith Takisha Chanelle Dannie Vena Fern Kendal Veta Tien Kenton Shannon Bell Chia Quinton Tatyana Valentine Patria Leeanne Keena Manuel Elidia Granville Elna Magdalena Aleen Soo Kaylee Kirby Rhona Priscilla Treva Amos Reena Mable Nathalie Alfred Krystyna Leonila Mercedez Shelli Jacqualine Rivka Yolando Bertha Zofia)
+    double_a = (0..26).to_a + (0..26).to_a
+    100.times do
+      i = rand(0..26)
+  %>
+      <div class='name'><%= Time.at(Time.new(1934, 12, 5) + rand * (Time.new(2006, 2, 17).to_f - Time.new(1934, 12, 5).to_f)).strftime('%F') %><br><%= names.shift%></div>
+      <% 27.times do %>
+        <%= "<div class='moon' style='background-image: url(\"images/moon-#{double_a[i += 1]}.jpg\")'></div>" %>
+      <% end %>
+      <div class='clearfix'></div>
+  <% end %>
+
+</body>
+</html>
