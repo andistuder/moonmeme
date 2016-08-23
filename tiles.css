@@ -1,0 +1,16 @@
+body {
+    /*background-image: url("images/moon-22.jpg"), url("images/moon-12.jpg");*/
+    /*background-repeat: repeat;*/
+    background-color: black;
+    color: white;
+}
+
+.moon {
+  float: left;
+  width: 160px;
+  height: 160px;
+  background-position: 10px 10px;
+  background-size: 140px 140px;
+  background-repeat: no-repeat;
+
+}
