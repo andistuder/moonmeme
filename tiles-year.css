@@ -4,6 +4,15 @@ body {
     background-color: black;
     color: white;
 }
+body.year {
+  width: 14700px;
+}
+
+div#preloader {
+  position: absolute;
+  left: -9999px;
+  top:  -9999px;
+  }
 
 .moon {
   float: left;
@@ -21,9 +30,11 @@ body {
   height: 40px;
   color: #999;
   font-family: arial, sans-serif;
-  font-size: 12px;
+  font-size: 0.8em;
   padding-top: 16px;
   padding-left: 12px;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .clearfix {
