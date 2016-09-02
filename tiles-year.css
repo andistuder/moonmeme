@@ -1,6 +1,7 @@
 body {
     /*background-image: url("images/moon-22.jpg"), url("images/moon-12.jpg");*/
     /*background-repeat: repeat;*/
+    cursor: url(images/blank.png), none;
     background-color: black;
     color: white;
 }

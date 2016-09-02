@@ -1,0 +1,24 @@
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="tiles-year.css">
+    <script type="text/javascript" src="js/moon_functions.js"></script>
+    <script type="text/javascript" src="js/tile_functions.js"></script>
+    <script type="text/javascript" src="data/portrait_data.js"></script>
+</head>
+
+<body class='year' , id='year'>
+    <div id="preloader">
+    </div>
+    <script language="JavaScript">
+        preload_images('preloader');
+
+        var data = all_people()
+
+        data.forEach(function(person) {
+            print_row('year', person, 365);
+        });
+    </script>
+</body>
+
+</html>
