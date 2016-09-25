@@ -1,7 +1,7 @@
 body {
     /*background-image: url("images/moon-22.jpg"), url("images/moon-12.jpg");*/
     /*background-repeat: repeat;*/
-    cursor: url(images/blank.png), none;
+    /*cursor: url(images/blank.png), none;*/
     background-color: black;
     color: white;
 }
@@ -37,6 +37,31 @@ div#preloader {
   white-space: nowrap;
   overflow: hidden;
 }
+
+.form-control {
+  color: #bbb;
+  font-family: arial, sans-serif;
+  font-size: 0.8em;
+  display: inline-block;
+  width: auto; // Prevent labels from stacking above inputs in `.form-group`
+  vertical-align: middle;
+  margin-right: 10px;
+}
+
+.form-control input {
+  padding: 2px;
+  margin: 1px;
+}
+
+.button {
+  display: inline-block;
+  font-family: arial, sans-serif;
+  font-size: 0.8em;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  border: 1px solid transparent;
+  paddig: 4px;
 
 .clearfix {
   clear: both;

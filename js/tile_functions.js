@@ -16,7 +16,8 @@ function print_row(element_id, person, row_length) {
     // console.log(person.name);
     // console.log(new Date(person.dob));
     // Setting time to midday
-    var first_image_id = compute_image_id(new Date(person.dob + ' 12:00'));
+    var dob = (person.dob.length < 11) ? person.dob + ' 12:00' : person.dob;
+    var first_image_id = compute_image_id(new Date(dob));
     _append_personal_details(element_id, person);
     [...Array(row_length).keys()].forEach(function(i) {
         var image_id = ((i + first_image_id + 28) % 28);
@@ -28,7 +29,7 @@ function print_row(element_id, person, row_length) {
 function _append_personal_details(element_id, person) {
     var node = document.createElement('div');
     node.classList = ['name'];
-    node.appendChild(document.createTextNode(person.dob));
+    node.appendChild(document.createTextNode(person.dob.split(' ')[0]));
     node.appendChild(document.createElement('br'));
     node.appendChild(document.createTextNode(person.name));
     document.getElementById(element_id).appendChild(node);
@@ -45,4 +46,22 @@ function _moon_node(image_id) {
     node.classList = ['moon'];
     node.style = 'background-image: url(\"images/moon-' + image_id + '.jpg\")';
     return node;
+}
+
+function parse_person(form_data) {
+
+    var dob = form_data.get('year') + '-' +
+        form_data.get('month') + '-' +
+        form_data.get('day');
+
+    if (form_data.get('minute') && form_data.get('hour')) {
+        dob = dob + ' ' +
+            ('0' + form_data.get('hour')).slice(-2) + ':' +
+            ('0' + form_data.get('minute')).slice(-2);
+    }
+
+    return {
+        dob: dob,
+        name: form_data.get('name')
+    };
 }

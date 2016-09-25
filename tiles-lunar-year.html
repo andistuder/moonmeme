@@ -1,4 +1,4 @@
-<html>
+<!DOCTYPE html>
 
 <head>
     <link rel="stylesheet" type="text/css" href="css/tiles-year.css">
@@ -10,15 +10,91 @@
 <body class='year' , id='year'>
     <div id="preloader">
     </div>
+    <div id='tiles-container'>
+    </div>
+
+    <form name="userdob" enctype="multipart/form-data" id="userdob" action="" method="post">
+        <div class="form-control">
+          <p> Add your own name and <br> date of birth to the list:</p>
+        </div>
+        <div class="form-control">
+            <label for="name">First Name</label>
+          <br>
+            <input type="text" size=14 id="name" name='name' required='true' value='Andi'>
+        </div>
+        <div class="form-control">
+            <label for="year">Year</label>
+            <br>
+            <input type="number" size=4 id="year" name='year' min="1900" max="2050" required='true' value='2016'>
+        </div>
+        <div class="form-control">
+            <label for="month">Month</label>
+            <br>
+            <input type=number name="month" size=5 min="1" max="12" required='true' value='3'>
+        </div>
+        <div class="form-control">
+            <label for="day">Day</label>
+            <br>
+            <input type=number name="day" size=3 min="1" max="31" required='true' value='31'>
+        </div>
+        <div class="form-control">
+            <label for="hour">Hour</label>
+            <br>
+            <input type=number name="hour" size=3 min="0" max="23" >
+        </div>
+        <div class="form-control">
+            <label for="minute">Minute</label>
+            <br>
+            <input type=number name="minute" size=3 min="0" max="59" >
+        </div>
+        <input class='button' id='user-dob-submit' type=submit name="submit" value="Submit" size=3>
+        </div>
+    </form>
+
     <script language="JavaScript">
+
         preload_images('preloader');
 
         var data = all_people()
 
         data.forEach(function(person) {
-            print_row('year', person, 365);
+            print_row('tiles-container', person, 365);
         });
+
+        var form = document.forms.namedItem("userdob");
+        form.addEventListener('submit', function(ev) {
+
+            var oData = new FormData(form);
+
+            print_row('tiles-container', parse_person(oData), 365);
+
+            // var oReq = new XMLHttpRequest();
+            // oReq.open("POST", "stash.php", true);
+            // oReq.onload = function(oEvent) {
+            //   if (oReq.status == 200) {
+            //     oOutput.innerHTML = "Uploaded!";
+            //   } else {
+            //     oOutput.innerHTML = "Error " + oReq.status + " occurred when trying to upload your file.<br \/>";
+            //   }
+            // };
+
+            // oReq.send(oData);
+            ev.preventDefault();
+        }, false);
     </script>
+
+    <!-- <script src="https://www.gstatic.com/firebasejs/3.4.0/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyBAc-y_cSMAKD3O2veGCoOXPX1Lck_03lI",
+            authDomain: "moonmeme-d632f.firebaseapp.com",
+            databaseURL: "https://moonmeme-d632f.firebaseio.com",
+            storageBucket: "",
+            messagingSenderId: "324764381108"
+        };
+        firebase.initializeApp(config);
+    </script> -->
 </body>
 
 </html>
