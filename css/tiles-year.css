@@ -25,6 +25,19 @@ div#preloader {
 
 }
 
+.moon-day {
+  padding: 12px;
+}
+
+#day .moon {
+  width: 80px;
+  height: 112px;
+  background-position: 4px 23px;
+  background-size: 72px 72px;
+  background-repeat: no-repeat;
+
+}
+
 .name {
   float: left;
   width: 88px;
@@ -38,6 +51,9 @@ div#preloader {
   overflow: hidden;
 }
 
+form {
+  clear: both;
+}
 .form-control {
   color: #bbb;
   font-family: arial, sans-serif;

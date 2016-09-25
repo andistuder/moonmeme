@@ -12,16 +12,29 @@ function _image_node(image_id) {
     return image_node;
 }
 
+function print_tile(element_id, person) {
+    var dob = (person.dob.length < 11) ? person.dob + ' 12:00' : person.dob;
+    var first_image_id = compute_image_id(new Date(dob));
+}
+
 function print_row(element_id, person, row_length) {
     // console.log(person.name);
     // console.log(new Date(person.dob));
     // Setting time to midday
     var dob = (person.dob.length < 11) ? person.dob + ' 12:00' : person.dob;
     var first_image_id = compute_image_id(new Date(dob));
-    _append_personal_details(element_id, person);
+    if (row_length > 1) {
+        _append_personal_details(element_id, person);
+    }
     [...Array(row_length).keys()].forEach(function(i) {
         var image_id = ((i + first_image_id + 28) % 28);
-        document.getElementById(element_id).appendChild(_moon_node(image_id));
+        var moon_node;
+        if (row_length > 1){
+            moon_node = _moon_node(image_id);
+        }else{
+            moon_node = _moon_node_img(image_id, person);
+        }
+        document.getElementById(element_id).appendChild(moon_node);
     });
     _append_clearfix(element_id);
 }
@@ -36,9 +49,19 @@ function _append_personal_details(element_id, person) {
 }
 
 function _append_clearfix(element_id) {
-    var node = document.createElement('div');
-    node.classList = ['clearfix'];
-    document.getElementById(element_id).appendChild(node);
+    // var node = document.createElement('div');
+    // // node.classList = ['clearfix'];
+    // document.getElementById(element_id).appendChild(node);
+}
+
+function _moon_node_img(image_id, person) {
+    var node = document.createElement('img');
+    node.classList = ['moon-day'];
+    node.src = "images/moon-" + image_id + ".jpg";
+    node.width = 96;
+    node.alt = person.name + " " + person.dob;
+    node.title = person.name + " " + person.dob;
+    return node;
 }
 
 function _moon_node(image_id) {
