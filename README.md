@@ -48,4 +48,11 @@ Unplug, count to 5, plug and play.
 
 Unauthorised reproduction infringes copyright.
 
+allow people to enter their name and DoB:
+at the bottom of a lunar tiles page.
+
+Save it and the scroll the page to the right name.
+
+Maybe think of a keyboard short cut to zoom out to max  (done with JS. )
+
 © 2016 Liliane Lijn
