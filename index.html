@@ -1,122 +1,32 @@
-<html>
+<!DOCTYPE html>
+<html lang=en>
+
 <head>
-
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>A Moon Project</title>
-<meta name="description"
-	content="In Moonmeme, the artist reveals her concept to write on the Moon from the Earth using a laser beam. The word SHE is projected onto the surface of the moon, the meaning of this word being gradually transformed as the Moon moves through its phases." />
-<meta name="keywords"
-	content="Liliane Lijn, Art, Sculpture, Video, Artist, London" />
-<meta name="author"
-	content="Richard Wilding http://www.richardwilding.com" />
-<meta http-equiv="Cache-Control" content="no-cache">
-<meta http-equiv="Pragma" content="no-cache">
-
-<script language="JavaScript">
-
-function phase(t) {
-
-    var l0 = 318.351648;
-    var P0 = 36.340410;
-    // doesn't seem used
-    // var N0 = 318.510107;
-
-    var omegabarg = 282.768422;
-    var epsilong = 279.403303;
-    var e_sun = 0.016713;
-
-    var D = t - 2447891.5 + 55 / 86400;
-    var l = 13.1763966 * D + l0;
-
-
-    var M_sun = 360 / 365.242191 * D + epsilong - omegabarg;
-    var v = M_sun + 360 / Math.PI * e_sun * Math.sin(0.017453293 * M_sun);
-
-    var lambda_sun = v + omegabarg;
-    var C = l - lambda_sun;
-
-
-    var M_moon = l - 0.1114041 * D - P0;
-    var Ev = 1.2739 * Math.sin(0.017453293 * (2 * C - M_moon));
-    var Ae = 0.1858 * Math.sin(0.017453293 * M_sun);
-    var A3 = 0.37 * Math.sin(0.017453293 * M_sun);
-
-    var M_moon1 = M_moon + Ev - Ae - A3;
-    var Ec = 6.2886 * Math.sin(0.017453293 * M_moon1);
-    var A4 = 0.214 * Math.sin(0.017453293 * 2 * M_moon1);
-    var l1 = l + Ev + Ec - Ae + A4;
-    var V = 0.6583 * Math.sin(0.017453293 * 2 * (l1 - lambda_sun));
-    var l2 = l1 + V;
-
-    var moon_phase = l2 - lambda_sun;
-    var mphase = (moon_phase - 360 * Math.floor(moon_phase / 360));
-
-    // updates image
-    var newsrc = "images/moon-" + Math.round(mphase / 13.846154) + ".jpg";
-    document.moonpic.src = newsrc;
-
-    return mphase;
-}
-
-function compute() {
-    var now = new Date();
-    var y = parseFloat(now.getFullYear());
-    var m = parseFloat(now.getMonth()) + 1;
-    var d = parseFloat(now.getDate());
-    var uh = parseFloat(now.getHours());
-    var um = parseFloat(now.getMinutes());
-    var us = parseFloat(now.getSeconds());
-
-    var extra = 100.0 * y + m - 190002.5;
-    var rjd = 367.0 * y;
-    rjd -= Math.floor(7.0 * (y + Math.floor((m + 9.0) / 12.0)) / 4.0);
-    rjd += Math.floor(275.0 * m / 9.0);
-    rjd += d;
-    rjd += (uh + (um + us / 60.0) / 60.0) / 24.0;
-    rjd += 1721013.5;
-    rjd -= 0.5 * extra / Math.abs(extra);
-    rjd += 0.5;
-    phase(rjd);
-}
-
-function startTimer() {
-    var minutes = 7;
-    var seconds = 48;
-    var timeout_sec = 7;
-    setTimeout(refresh, (((minutes * 60) + seconds + timeout_sec) * 1000));
-}
-
-function refresh() {
-    window.location.href = 'index.html';
-}
-
-</script>
-
+    <meta charset=utf-8>
+    <meta content="In Moonmeme, the artist reveals her concept to write on the Moon from the Earth using a laser beam. The word SHE is projected onto the surface of the moon, the meaning of this word being gradually transformed as the Moon moves through its phases."
+        name=description>
+    <meta content="Liliane Lijn, Richard Wilding, Andi Studer" name=author>
+    <title>A Moon Project</title>
+    <link rel="stylesheet" type="text/css" href="css/tiles-year.css">
+    <script type="text/javascript" src="js/moon_functions.js"></script>
 </head>
 
-<body bgcolor="#000000" style='cursor:url(images/blank.png),none;'>
-	<table height="100%" border="0" align="center" cellspacing="0"
-		cellpadding="0">
+<body>
+    <table class="absolute_center">
+        <tr>
+            <td><img src="images/moon-12.jpg" height="640" width="640" id=moonpic alt='the moon'></td>
+        </tr>
+    </table>
 
-		<tr height"100%">
-		<td align="center" colspan="2"><img src="images/moon-12.jpg" height="640" width="640" name=moonpic align="center"></td>
-		</tr>
-
-	</table>
-	</form>
-
-
-    <script language="JavaScript">
-        startTimer();
-        compute();
+    <script>
+        var image_id = compute_image_id(new Date());
+        document.getElementById('moonpic').src = "images/moon-" + image_id + ".jpg";
     </script>
 
     <audio autoplay>
       <source src="audio/story.wav" type="audio/wav">
     </audio>
 
-<div class="share-box">
-</div>
-
 </body>
+
 </html>
