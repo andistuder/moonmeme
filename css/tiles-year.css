@@ -5,7 +5,7 @@ body {
     background-color: black;
     color: white;
 }
-body.year {
+body.year_tiles {
   width: 14700px;
 }
 
@@ -36,6 +36,10 @@ div#preloader {
   padding-left: 12px;
   white-space: nowrap;
   overflow: hidden;
+}
+
+form#userdob {
+  padding-left: 12px;
 }
 
 .form-control {

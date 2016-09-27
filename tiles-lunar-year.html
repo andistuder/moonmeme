@@ -1,13 +1,18 @@
 <!DOCTYPE html>
+<html lang=en>
 
 <head>
+    <meta charset=utf-8>
+    <meta content="In Moonmeme, the artist reveals her concept to write on the Moon from the Earth using a laser beam. The word SHE is projected onto the surface of the moon, the meaning of this word being gradually transformed as the Moon moves through its phases." name=description>
+    <meta content="Liliane Lijn, Richard Wilding, Andi Studer" name=author>
+    <title>A Moon Project</title>
     <link rel="stylesheet" type="text/css" href="css/tiles-year.css">
     <script type="text/javascript" src="js/moon_functions.js"></script>
     <script type="text/javascript" src="js/tile_functions.js"></script>
     <script type="text/javascript" src="data/portrait_data.js"></script>
 </head>
 
-<body class='year' , id='year'>
+<body class='year_tiles'>
     <div id="preloader">
     </div>
     <div id='tiles-container'>
@@ -18,40 +23,39 @@
           <p> Add your own name and <br> date of birth to the list:</p>
         </div>
         <div class="form-control">
-            <label for="name">First Name</label>
+            <label for="name">Name</label>
           <br>
-            <input type="text" size=14 id="name" name='name' required='true'>
+            <input type="text" size=14 id="name" name='name' required>
         </div>
         <div class="form-control">
             <label for="year">Year</label>
             <br>
-            <input type="number" size=4 id="year" name='year' min="1900" max="2050" required='true'>
+            <input type="number" size=4 id="year" name='year' min="1900" max="2050" required>
         </div>
         <div class="form-control">
             <label for="month">Month</label>
             <br>
-            <input type=number name="month" size=5 min="1" max="12" required='true'>
+            <input type=number name="month" id="month" size=5 min="1" max="12" required>
         </div>
         <div class="form-control">
             <label for="day">Day</label>
             <br>
-            <input type=number name="day" size=3 min="1" max="31" required='true'>
+            <input type=number name="day" id="day"  size=3 min="1" max="31" required>
         </div>
         <div class="form-control">
             <label for="hour">Hour</label>
             <br>
-            <input type=number name="hour" size=3 min="0" max="23">
+            <input type=number name="hour" id="hour" size=3 min="0" max="23">
         </div>
         <div class="form-control">
             <label for="minute">Minute</label>
             <br>
-            <input type=number name="minute" size=3 min="0" max="59">
+            <input type=number name="minute" id="minute" size=3 min="0" max="59">
         </div>
         <input class='button' id='user-dob-submit' type=submit name="submit" value="Submit" size=3>
-        </div>
     </form>
 
-    <script language="JavaScript">
+    <script>
 
         preload_images('preloader');
 
