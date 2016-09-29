@@ -12,24 +12,29 @@ body {
   overflow: auto;
   margin: auto;
   position: absolute;
-  top: 0; left: 0; bottom: 0; right: 0;
+  top: -24px; left: 0; bottom: 0; right: 0;
 }
 
-.center-container {
-  position: relative;
+.sticky-footer {
+  position:absolute;
+  bottom:10px;
 }
 
 body.year_tiles {
   width: 14700px;
 }
 
-div#preloader {
+.year_tiles .row {
+  clear: left;
+}
+
+.year_tiles div#preloader {
   position: absolute;
   left: -9999px;
   top:  -9999px;
   }
 
-.moon {
+.year_tiles .moon {
   float: left;
   width: 40px;
   height: 56px;
@@ -39,7 +44,7 @@ div#preloader {
 
 }
 
-.name {
+.year_tiles .name {
   float: left;
   width: 88px;
   height: 40px;
@@ -69,6 +74,7 @@ form#userdob {
 .form-control input {
   padding: 2px;
   margin: 1px;
+  background-color: #eee;
 }
 
 .button {

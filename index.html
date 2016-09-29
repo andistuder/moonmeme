@@ -9,24 +9,73 @@
     <title>A Moon Project</title>
     <link rel="stylesheet" type="text/css" href="css/tiles-year.css">
     <script type="text/javascript" src="js/moon_functions.js"></script>
+    <script type="text/javascript" src="js/tile_functions.js"></script>
 </head>
 
 <body>
-    <table class="absolute_center">
-        <tr>
-            <td><img src="images/moon-12.jpg" height="640" width="640" id=moonpic alt='the moon'></td>
-        </tr>
-    </table>
+    <div class='center-container'>
+        <table class="absolute_center">
+            <tr>
+                <td>
+                    <a href='tiles-lunar-year.html' title='View all lunar birth portraits'>
+                        <img src="images/moon-12.jpg" height="640" width="640" id=moonpic alt='the moon'>
+                    </a>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class='sticky-footer'>
+        <form name="userdob" enctype="multipart/form-data" id="userdob" action="" method="post">
+            <div class="form-control">
+                <label for="name">Name</label>
+                <br>
+                <input type="text" size=14 id="name" name='name' required>
+            </div>
+            <div class="form-control">
+                <label for="year">Year</label>
+                <br>
+                <input type="number" size=4 id="year" name='year' min="1900" max="2050" required>
+            </div>
+            <div class="form-control">
+                <label for="month">Month</label>
+                <br>
+                <input type=number name="month" id="month" size=5 min="1" max="12" required>
+            </div>
+            <div class="form-control">
+                <label for="day">Day</label>
+                <br>
+                <input type=number name="day" id="day" size=3 min="1" max="31" required>
+            </div>
+            <div class="form-control">
+                <label for="hour">Hour</label>
+                <br>
+                <input type=number name="hour" id="hour" size=3 min="0" max="23">
+            </div>
+            <div class="form-control">
+                <label for="minute">Minute</label>
+                <br>
+                <input type=number name="minute" id="minute" size=3 min="0" max="59">
+            </div>
+            <input class='button' id='user-dob-submit' type=submit name="submit" value="Submit" size=3>
+        </form>
+
+    </div>
 
     <script>
         var image_id = compute_image_id(new Date());
         document.getElementById('moonpic').src = "images/moon-" + image_id + ".jpg";
+
+        var form = document.forms.namedItem("userdob");
+        form.addEventListener('submit', function(ev) {
+            var oData = new FormData(form);
+            image_id = compute_image_id(new Date(parse_person(oData).dob));
+            document.getElementById('moonpic').src = "images/moon-" + image_id + ".jpg";
+            ev.preventDefault();
+        }, false);
     </script>
 
-    <audio autoplay>
-      <source src="audio/story.wav" type="audio/wav">
+    <audio>
+        <source src="audio/story.wav" type="audio/wav">
     </audio>
-
 </body>
-
 </html>
