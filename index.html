@@ -63,15 +63,31 @@
 
     <script>
         var image_id = compute_image_id(new Date());
-        document.getElementById('moonpic').src = "images/moon-" + image_id + ".jpg";
+        update_moonpic('moonpic', image_id);
 
         var form = document.forms.namedItem("userdob");
         form.addEventListener('submit', function(ev) {
-            var oData = new FormData(form);
-            image_id = compute_image_id(new Date(parse_person(oData).dob));
-            document.getElementById('moonpic').src = "images/moon-" + image_id + ".jpg";
+            var person = parse_person(new FormData(form));
+
+            image_id = compute_image_id(new Date(person.dob));
+            update_moonpic('moonpic', image_id);
+
+            send_data(person);
             ev.preventDefault();
         }, false);
+    </script>
+
+    <script src="https://www.gstatic.com/firebasejs/3.4.0/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyBAc-y_cSMAKD3O2veGCoOXPX1Lck_03lI",
+            authDomain: "moonmeme-d632f.firebaseapp.com",
+            databaseURL: "https://moonmeme-d632f.firebaseio.com",
+            storageBucket: "",
+            messagingSenderId: "324764381108"
+        };
+        firebase.initializeApp(config);
     </script>
 
     <audio>

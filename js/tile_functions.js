@@ -85,3 +85,14 @@ function parse_person(form_data) {
         name: form_data.get('name')
     };
 }
+
+function send_data(person) {
+    var newPostKey = firebase.database().ref().child('people').push().key;
+    var updates = {};
+    updates['/people/' + newPostKey] = person;
+    return firebase.database().ref().update(updates);
+}
+
+function update_moonpic(element_id, image_id) {
+    document.getElementById(element_id).src = "images/moon-" + image_id + ".jpg";
+}
