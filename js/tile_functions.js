@@ -1,6 +1,7 @@
 function preload_images(element_id) {
+    var element = document.getElementById(element_id);
     [...Array(28).keys()].forEach(function(i) {
-        document.getElementById(element_id).appendChild(_image_node(i));
+        element.appendChild(_image_node(i));
     });
 }
 
@@ -12,19 +13,15 @@ function _image_node(image_id) {
     return image_node;
 }
 
-function print_row(element_id, person, row_length) {
-    // console.log(person.name);
-    // console.log(new Date(person.dob));
-    // Setting time to midday
-    var dob = (person.dob.length < 11) ? person.dob + ' 12:00' : person.dob;
-    dob = new Date(dob);
-    var first_image_id = compute_image_id(dob);
+function print_row(person, row_length) {
+    var first_image_id = compute_image_id(person.date_ob);
     var row_node = document.createElement('div');
     row_node.classList = ['row'];
-    row_node.dataset.dob = dob.getTime();
+    row_node.dataset.dob = person.date_ob.getTime();
     _append_personal_details(row_node, person);
+    var image_id;
     [...Array(row_length).keys()].forEach(function(i) {
-        var image_id = ((i + first_image_id + 28) % 28);
+        image_id = ((i + first_image_id + 28) % 28);
         row_node.appendChild(_moon_node(image_id));
     });
     return row_node;
@@ -32,7 +29,7 @@ function print_row(element_id, person, row_length) {
 
 
 function insert_row(element_id, person, row_length) {
-    var row_node = print_row(element_id, person, row_length)
+    var row_node = print_row(person, row_length);
     var all_rows = document.getElementsByClassName("row");
     var timestamp = parseInt(row_node.dataset.dob);
     for (var i=0, max=all_rows.length; i < max; i++) {
@@ -46,9 +43,12 @@ function insert_row(element_id, person, row_length) {
     }
 }
 
-function append_row(element_id, person, row_length) {
-    var row_node = print_row(element_id, person, row_length)
-    document.getElementById(element_id).appendChild(row_node);
+function append_row(element, person, row_length) {
+    setTimeout(function(){
+        var row_node = print_row(person, row_length);
+        element.appendChild(row_node);
+        // do other things
+    }, 1);
 }
 
 function _append_personal_details(row_node, person) {
@@ -97,16 +97,22 @@ function load_people(element_id) {
     firebase.database().ref().on("value", function(snapshot) {
         var records = snapshot.val().people
         var people = [];
+        var record;
+        var dob_string;
+        var element = document.getElementById(element_id);
         for (var key in records) {
-            people.push(records[key]);
+            record = records[key];
+            dob_string = (record.dob.length < 11) ? record.dob + ' 12:00' : record.dob;
+
+            record.date_ob = new Date(dob_string);
+            people.push(record);
         }
 
-        people = people.sort(function(a, b){return (new Date(a.dob))-(new Date(b.dob))});
+        people = people.sort(function(a, b){return a.date_ob-b.date_ob});
 
         people.forEach(function(person) {
-            console.log(person);
-            // TODO: set this back to 365
-            append_row(element_id, person, 185);
+            // console.log(person);
+            append_row(element, person, 365);
         });
     }, function(errorObject) {
         console.log("The read failed: " + errorObject.code);
