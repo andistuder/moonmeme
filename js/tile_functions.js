@@ -101,6 +101,8 @@ function load_people(element_id) {
             people.push(records[key]);
         }
 
+        people = people.sort(function(a, b){return (new Date(a.dob))-(new Date(b.dob))});
+
         people.forEach(function(person) {
             console.log(person);
             // TODO: set this back to 365
