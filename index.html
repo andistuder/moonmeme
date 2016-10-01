@@ -8,8 +8,6 @@
     <meta content="Liliane Lijn, Richard Wilding, Andi Studer" name=author>
     <title>A Moon Project</title>
     <link rel="stylesheet" type="text/css" href="css/tiles-year.css">
-    <script type="text/javascript" src="js/moon_functions.js"></script>
-    <script type="text/javascript" src="js/tile_functions.js"></script>
 </head>
 
 <body>
@@ -61,9 +59,15 @@
 
     </div>
 
+    <script src="https://www.gstatic.com/firebasejs/3.4.0/firebase.js"></script>
+    <script type="text/javascript" src="js/moon_functions.js"></script>
+    <script type="text/javascript" src="js/tile_functions.js"></script>
+
     <script>
         var image_id = compute_image_id(new Date());
         update_moonpic('moonpic', image_id);
+
+        init_firebase();
 
         var form = document.forms.namedItem("userdob");
         form.addEventListener('submit', function(ev) {
@@ -77,21 +81,9 @@
         }, false);
     </script>
 
-    <script src="https://www.gstatic.com/firebasejs/3.4.0/firebase.js"></script>
+    <!-- <script type="text/javascript" src="data/portrait_data.js"></script>
     <script>
-        // Initialize Firebase
-        var config = {
-            apiKey: "AIzaSyBAc-y_cSMAKD3O2veGCoOXPX1Lck_03lI",
-            authDomain: "moonmeme-d632f.firebaseapp.com",
-            databaseURL: "https://moonmeme-d632f.firebaseio.com",
-            storageBucket: "",
-            messagingSenderId: "324764381108"
-        };
-        firebase.initializeApp(config);
-    </script>
-
-    <audio>
-        <source src="audio/story.wav" type="audio/wav">
-    </audio>
+        send_initial_dataset();
+    </script> -->
 </body>
 </html>

@@ -93,6 +93,42 @@ function send_data(person) {
     return firebase.database().ref().update(updates);
 }
 
+function load_people(element_id) {
+    firebase.database().ref().on("value", function(snapshot) {
+        var records = snapshot.val().people
+        var people = [];
+        for (var key in records) {
+            people.push(records[key]);
+        }
+
+        people.forEach(function(person) {
+            console.log(person);
+            // TODO: set this back to 365
+            append_row(element_id, person, 185);
+        });
+    }, function(errorObject) {
+        console.log("The read failed: " + errorObject.code);
+    });
+}
+
 function update_moonpic(element_id, image_id) {
     document.getElementById(element_id).src = "images/moon-" + image_id + ".jpg";
+}
+
+function init_firebase() {
+    var config = {
+        apiKey: "AIzaSyBAc-y_cSMAKD3O2veGCoOXPX1Lck_03lI",
+        authDomain: "moonmeme-d632f.firebaseapp.com",
+        databaseURL: "https://moonmeme-d632f.firebaseio.com",
+        storageBucket: "",
+        messagingSenderId: "324764381108"
+    };
+    firebase.initializeApp(config);
+}
+
+function send_initial_dataset() {
+    var people = all_people();
+    people.forEach(function(person) {
+        console.log(send_data(person));
+    });
 }
