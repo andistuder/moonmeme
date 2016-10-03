@@ -62,10 +62,6 @@
 
     </div>
 
-    <audio autoplay>
-        <source src="audio/story.wav" type="audio/wav">
-    </audio>
-
     <script src="https://www.gstatic.com/firebasejs/3.4.0/firebase.js"></script>
     <script type="text/javascript" src="js/moon_functions.js"></script>
     <script type="text/javascript" src="js/tile_functions.js"></script>
@@ -101,8 +97,9 @@
 
             setTimeout(function(){
                 load_people('tiles-container');
+                var audio = new Audio('audio/story.wav');
+                audio.play();
             }, 10000);
-
             ev.preventDefault();
         }, false);
     </script>
