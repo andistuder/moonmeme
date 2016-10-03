@@ -11,19 +11,22 @@
 </head>
 
 <body>
-    <div class='center-container'>
+    <div id="preloader">
+    </div>
+    <div id='tiles-container'>
+    </div>
+    <div id='center-container'>
         <table class="absolute_center">
             <tr>
                 <td>
-                    <a href='tiles-lunar-year.html' title='View all lunar birth portraits'>
-                        <img src="images/moon-12.jpg" height="640" width="640" id=moonpic alt='the moon'>
-                    </a>
+                  <img src="images/moon-12.jpg" height="640" width="640" id=moonpic alt='the moon'>
                 </td>
             </tr>
         </table>
     </div>
-    <div class='sticky-footer'>
+    <div id='sticky-footer'>
         <form name="userdob" enctype="multipart/form-data" id="userdob" action="" method="post">
+            <p>INPUT YOUR BIRTH DATA TO SEE YOUR LUNAR BIRTH PORTRAIT:</p>
             <div class="form-control">
                 <label for="name">Name</label>
                 <br>
@@ -59,6 +62,10 @@
 
     </div>
 
+    <audio autoplay>
+        <source src="audio/story.wav" type="audio/wav">
+    </audio>
+
     <script src="https://www.gstatic.com/firebasejs/3.4.0/firebase.js"></script>
     <script type="text/javascript" src="js/moon_functions.js"></script>
     <script type="text/javascript" src="js/tile_functions.js"></script>
@@ -72,11 +79,30 @@
         var form = document.forms.namedItem("userdob");
         form.addEventListener('submit', function(ev) {
             var person = parse_person(new FormData(form));
+            person.date_ob = new Date(person.dob);
 
-            image_id = compute_image_id(new Date(person.dob));
+            image_id = compute_image_id(person.date_ob);
             update_moonpic('moonpic', image_id);
 
+            hide_element('userdob');
             send_data(person);
+
+            var footer_element = document.getElementById('sticky-footer');
+            _append_personal_details(footer_element, person);
+
+            setTimeout(function(){
+                hide_element('sticky-footer');
+                hide_element('center-container');
+                document.body.classList = ['year_tiles'];
+                preload_images('preloader');
+                var year_container = document.getElementById('tiles-container');
+                append_row(year_container, person, 365);
+            }, 5000);
+
+            setTimeout(function(){
+                load_people('tiles-container');
+            }, 10000);
+
             ev.preventDefault();
         }, false);
     </script>

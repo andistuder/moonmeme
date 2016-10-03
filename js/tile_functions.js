@@ -48,7 +48,7 @@ function append_row(element, person, row_length) {
         var row_node = print_row(person, row_length);
         element.appendChild(row_node);
         // do other things
-    }, 1);
+    }, 400);
 }
 
 function _append_personal_details(row_node, person) {
@@ -139,4 +139,8 @@ function send_initial_dataset() {
     people.forEach(function(person) {
         console.log(send_data(person));
     });
+}
+
+function hide_element(element_id) {
+    document.getElementById(element_id).style.display = 'none';
 }

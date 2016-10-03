@@ -3,7 +3,9 @@ body {
     /*background-repeat: repeat;*/
     /*cursor: url(images/blank.png), none;*/
     background-color: black;
-    color: white;
+    font-family: arial, sans-serif;
+    font-size: 0.9em;
+    color: #bbb;
 }
 
 .absolute_center {
@@ -15,26 +17,32 @@ body {
   top: -24px; left: 0; bottom: 0; right: 0;
 }
 
-.sticky-footer {
+#sticky-footer {
   position:absolute;
   bottom:10px;
+  padding-left: 12px;
+}
+
+#sticky-footer p {
+  margin: 6px 0;
 }
 
 body.year_tiles {
   width: 14700px;
+  font-size: 0.8em;
 }
 
-.year_tiles .row {
+.row {
   clear: left;
 }
 
-.year_tiles div#preloader {
+div#preloader {
   position: absolute;
   left: -9999px;
   top:  -9999px;
   }
 
-.year_tiles .moon {
+.moon {
   float: left;
   width: 40px;
   height: 56px;
@@ -44,34 +52,32 @@ body.year_tiles {
 
 }
 
-.year_tiles .name {
+.name {
   float: left;
   width: 88px;
   height: 40px;
   color: #999;
-  font-family: arial, sans-serif;
-  font-size: 0.8em;
   padding-top: 16px;
   padding-left: 12px;
   white-space: nowrap;
   overflow: hidden;
 }
 
-form#userdob {
-  padding-left: 12px;
-}
-
 .form-control {
-  color: #bbb;
-  font-family: arial, sans-serif;
-  font-size: 0.8em;
   display: inline-block;
+  line-height: 1.4em;
   width: auto; // Prevent labels from stacking above inputs in `.form-group`
   vertical-align: middle;
   margin-right: 10px;
 }
 
+p.form
+
+.form-control label {
+  line-height: 1.6em;
+}
 .form-control input {
+  font-size: 1em;
   padding: 2px;
   margin: 1px;
   background-color: #eee;
@@ -79,8 +85,7 @@ form#userdob {
 
 .button {
   display: inline-block;
-  font-family: arial, sans-serif;
-  font-size: 0.8em;
+  font-size: 1em;
   text-align: center;
   white-space: nowrap;
   vertical-align: middle;
