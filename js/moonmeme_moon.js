@@ -1,4 +1,6 @@
-function _phase(t) {
+MOONMEME.moon = {};
+
+MOONMEME.moon._phase = function (t) {
 
     var l0 = 318.351648;
     var P0 = 36.340410;
@@ -38,7 +40,7 @@ function _phase(t) {
     return Math.round(mphase / 13.846154)
 }
 
-function compute_image_id(date) {
+MOONMEME.moon.computeImageID = function (date) {
     var y = parseFloat(date.getFullYear());
     var m = parseFloat(date.getMonth()) + 1;
     var d = parseFloat(date.getDate());
@@ -55,5 +57,5 @@ function compute_image_id(date) {
     rjd += 1721013.5;
     rjd -= 0.5 * extra / Math.abs(extra);
     rjd += 0.5;
-    return _phase(rjd);
+    return this._phase(rjd);
 }

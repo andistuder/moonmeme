@@ -19,13 +19,13 @@
         <table class="absolute_center">
             <tr>
                 <td>
-                  <img src="images/moon-12.jpg" height="640" width="640" id=moonpic alt='the moon'>
+                  <img src="images/moon-12.jpg" height="640" width="640" id=moonpic alt='the moon' style= 'display: none;'>
                 </td>
             </tr>
         </table>
     </div>
     <div id='sticky-footer'>
-        <form name="userdob" enctype="multipart/form-data" id="userdob" action="" method="post">
+        <form name="user-form" enctype="multipart/form-data" id="user-form" action="" method="post">
             <p>INPUT YOUR BIRTH DATA TO SEE YOUR LUNAR BIRTH PORTRAIT:</p>
             <div class="form-control">
                 <label for="name">Name</label>
@@ -59,36 +59,31 @@
             </div>
             <input class='button' id='user-dob-submit' type=submit name="submit" value="Submit" size=3>
         </form>
-
+        <div id='user-data'></div>
     </div>
 
     <script src="https://www.gstatic.com/firebasejs/3.4.0/firebase.js"></script>
-    <script type="text/javascript" src="js/moon_functions.js"></script>
-    <script type="text/javascript" src="js/tile_functions.js"></script>
+    <script type="text/javascript" src="js/moonmeme.js"></script>
+    <script type="text/javascript" src="js/moonmeme_moon.js"></script>
+    <script type="text/javascript" src="js/moonmeme_store.js"></script>
 
     <script>
-        var image_id = compute_image_id(new Date());
-        update_moonpic('moonpic', image_id);
+        MOONMEME.init();
+        MOONMEME.store.init();
 
-        init_firebase();
-
-        var form = document.forms.namedItem("userdob");
+        var form = document.forms.namedItem("user-form");
         form.addEventListener('submit', function(ev) {
-            var person = parse_person(new FormData(form));
-            person.date_ob = new Date(person.dob);
+            var person = MOONMEME.parsePerson(new FormData(form));
 
-            image_id = compute_image_id(person.date_ob);
-            update_moonpic('moonpic', image_id);
+            MOONMEME.updateMoonPic('moonpic', person.image_id);
+            MOONMEME.hideElement('user-form');
+            MOONMEME.printSubmittedData('user-data', person);
+            MOONMEME.store.createPerson(person);
 
-            hide_element('userdob');
-            send_data(person);
-
-            var footer_element = document.getElementById('sticky-footer');
-            _append_personal_details(footer_element, person);
 
             setTimeout(function(){
-                hide_element('sticky-footer');
-                hide_element('center-container');
+                MOONMEME.hideElement('sticky-footer');
+                MOONMEME.hideElement('center-container');
                 document.body.classList = ['year_tiles'];
                 preload_images('preloader');
                 var year_container = document.getElementById('tiles-container');
@@ -106,7 +101,7 @@
 
     <!-- <script type="text/javascript" src="data/portrait_data.js"></script>
     <script>
-        send_initial_dataset();
+        MOONMEME.store.createInitialSetOfPeople();
     </script> -->
 </body>
 </html>

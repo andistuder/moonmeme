@@ -20,12 +20,13 @@
     </audio>
 
     <script src="https://www.gstatic.com/firebasejs/3.4.0/firebase.js"></script>
-    <script type="text/javascript" src="js/moon_functions.js"></script>
-    <script type="text/javascript" src="js/tile_functions.js"></script>
+    <script type="text/javascript" src="js/moonmeme.js"></script>
+    <script type="text/javascript" src="js/moonmeme_moon.js"></script>
+    <script type="text/javascript" src="js/moonmeme_store.js"></script>
 
     <script>
-        preload_images('preloader');
-        init_firebase();
+        MOONMEME.preloadImages('preloader');
+        MOONMEME.store.init();
         load_people('tiles-container');
     </script>
 

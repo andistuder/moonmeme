@@ -1,4 +1,12 @@
-function preload_images(element_id) {
+var MOONMEME = {};
+
+MOONMEME.init = function () {
+    this.preloadImages('preloader');
+    var image_id = MOONMEME.moon.computeImageID(new Date());
+    this.updateMoonPic('moonpic', image_id);
+};
+
+MOONMEME.preloadImages = function (element_id) {
     var element = document.getElementById(element_id);
     [...Array(28).keys()].forEach(function(i) {
         element.appendChild(_image_node(i));
@@ -14,7 +22,7 @@ function _image_node(image_id) {
 }
 
 function print_row(person, row_length) {
-    var first_image_id = compute_image_id(person.date_ob);
+    var first_image_id = MOONMEME.moon.computeImageID(person.date_ob);
     var row_node = document.createElement('div');
     row_node.classList = ['row'];
     row_node.dataset.dob = person.date_ob.getTime();
@@ -68,7 +76,7 @@ function _moon_node(image_id) {
     return node;
 }
 
-function parse_person(form_data) {
+MOONMEME.parsePerson = function (form_data) {
 
     var dob = form_data.get('year') + '-' +
         form_data.get('month') + '-' +
@@ -80,18 +88,15 @@ function parse_person(form_data) {
             ('0' + form_data.get('minute')).slice(-2);
     }
 
+    var date_ob = new Date(dob);
+
     return {
         dob: dob,
-        name: form_data.get('name')
+        name: form_data.get('name'),
+        date_ob: date_ob,
+        image_id: MOONMEME.moon.computeImageID(date_ob)
     };
-}
-
-function send_data(person) {
-    var newPostKey = firebase.database().ref().child('people').push().key;
-    var updates = {};
-    updates['/people/' + newPostKey] = person;
-    return firebase.database().ref().update(updates);
-}
+};
 
 function load_people(element_id) {
     firebase.database().ref().on("value", function(snapshot) {
@@ -117,30 +122,20 @@ function load_people(element_id) {
     }, function(errorObject) {
         console.log("The read failed: " + errorObject.code);
     });
-}
+};
 
-function update_moonpic(element_id, image_id) {
-    document.getElementById(element_id).src = "images/moon-" + image_id + ".jpg";
-}
+MOONMEME.updateMoonPic = function (element_id, image_id) {
+    var element = document.getElementById(element_id);
+    element.src = "images/moon-" + image_id + ".jpg";
+    element.style.display = 'inline';
+};
 
-function init_firebase() {
-    var config = {
-        apiKey: "AIzaSyBAc-y_cSMAKD3O2veGCoOXPX1Lck_03lI",
-        authDomain: "moonmeme-d632f.firebaseapp.com",
-        databaseURL: "https://moonmeme-d632f.firebaseio.com",
-        storageBucket: "",
-        messagingSenderId: "324764381108"
-    };
-    firebase.initializeApp(config);
-}
+MOONMEME.printSubmittedData = function (element_id, person) {
+    var footer_element = document.getElementById(element_id);
+    _append_personal_details(footer_element, person);
+};
 
-function send_initial_dataset() {
-    var people = all_people();
-    people.forEach(function(person) {
-        console.log(send_data(person));
-    });
-}
 
-function hide_element(element_id) {
+MOONMEME.hideElement = function (element_id) {
     document.getElementById(element_id).style.display = 'none';
-}
+};
