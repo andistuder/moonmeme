@@ -98,29 +98,10 @@ MOONMEME.parsePerson = function (form_data) {
     };
 };
 
-function load_people(element_id) {
-    firebase.database().ref().on("value", function(snapshot) {
-        var records = snapshot.val().people
-        var people = [];
-        var record;
-        var dob_string;
-        var element = document.getElementById(element_id);
-        for (var key in records) {
-            record = records[key];
-            dob_string = (record.dob.length < 11) ? record.dob + ' 12:00' : record.dob;
-
-            record.date_ob = new Date(dob_string);
-            people.push(record);
-        }
-
-        people = people.sort(function(a, b){return a.date_ob-b.date_ob});
-
-        people.forEach(function(person) {
-            // console.log(person);
-            append_row(element, person, 365);
-        });
-    }, function(errorObject) {
-        console.log("The read failed: " + errorObject.code);
+MOONMEME.printPeople = function (element_id) {
+    var element = document.getElementById(element_id);
+    this.people.forEach(function(person) {
+        append_row(element, person, 365);
     });
 };
 

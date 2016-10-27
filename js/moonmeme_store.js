@@ -24,3 +24,26 @@ MOONMEME.store.createInitialSetOfPeople = function () {
         console.log(this.createPerson(person));
     });
 };
+
+MOONMEME.store.loadPeople = function (element_id) {
+    firebase.database().ref().on("value", function(snapshot) {
+        var records = snapshot.val().people
+        var people = [];
+        var record;
+        var dob_string;
+        for (var key in records) {
+            record = records[key];
+            dob_string = (record.dob.length < 11) ? record.dob + ' 12:00' : record.dob;
+
+            record.date_ob = new Date(dob_string);
+            people.push(record);
+        }
+
+        MOONMEME.people = people.sort(function(a, b){return a.date_ob-b.date_ob});
+        if (element_id) {
+            MOONMEME.printPeople(element_id);
+        }
+    }, function(errorObject) {
+        console.log("The read failed: " + errorObject.code);
+    });
+};

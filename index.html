@@ -70,6 +70,7 @@
     <script>
         MOONMEME.init();
         MOONMEME.store.init();
+        MOONMEME.store.loadPeople();
 
         var form = document.forms.namedItem("user-form");
         form.addEventListener('submit', function(ev) {
@@ -85,13 +86,12 @@
                 MOONMEME.hideElement('sticky-footer');
                 MOONMEME.hideElement('center-container');
                 document.body.classList = ['year_tiles'];
-                preload_images('preloader');
                 var year_container = document.getElementById('tiles-container');
                 append_row(year_container, person, 365);
             }, 5000);
 
             setTimeout(function(){
-                load_people('tiles-container');
+                MOONMEME.printPeople('tiles-container');
                 var audio = new Audio('audio/story.wav');
                 audio.play();
             }, 10000);
