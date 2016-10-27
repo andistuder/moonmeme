@@ -22,14 +22,13 @@ function _image_node(image_id) {
 }
 
 function print_row(person, row_length) {
-    var first_image_id = MOONMEME.moon.computeImageID(person.date_ob);
     var row_node = document.createElement('div');
     row_node.classList = ['row'];
     row_node.dataset.dob = person.date_ob.getTime();
     _append_personal_details(row_node, person);
     var image_id;
     [...Array(row_length).keys()].forEach(function(i) {
-        image_id = ((i + first_image_id + 28) % 28);
+        image_id = ((i + person.image_id + 28) % 28);
         row_node.appendChild(_moon_node(image_id));
     });
     return row_node;
@@ -90,12 +89,21 @@ MOONMEME.parsePerson = function (form_data) {
 
     var date_ob = new Date(dob);
 
-    return {
+    this.person = {
         dob: dob,
         name: form_data.get('name'),
         date_ob: date_ob,
         image_id: MOONMEME.moon.computeImageID(date_ob)
     };
+
+    this.people.push(this.person);
+    this.people = this.people.sort(function(a, b){return a.date_ob-b.date_ob});
+    this.store.createPerson(this.person);
+};
+
+MOONMEME.printPerson = function (element_id) {
+    var element = document.getElementById(element_id);
+    append_row(element, this.person, 365);
 };
 
 MOONMEME.printPeople = function (element_id) {

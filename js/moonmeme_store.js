@@ -12,13 +12,10 @@ MOONMEME.store.init = function () {
 };
 
 MOONMEME.store.createPerson = function (person) {
+    var record = { dob: person.dob, name: person.name };
     var newPostKey = firebase.database().ref().child('people').push().key;
     var updates = {};
-    updates['/people/' + newPostKey] = person;
-
-    MOONMEME.people.push(person);
-    MOONMEME.people = MOONMEME.people.sort(function(a, b){return a.date_ob-b.date_ob});
-
+    updates['/people/' + newPostKey] = record;
     return firebase.database().ref().update(updates);
 };
 
@@ -40,6 +37,8 @@ MOONMEME.store.loadPeople = function (element_id) {
             dob_string = (record.dob.length < 11) ? record.dob + ' 12:00' : record.dob;
 
             record.date_ob = new Date(dob_string);
+            record.image_id = MOONMEME.moon.computeImageID(record.date_ob);
+
             people.push(record);
         }
 
