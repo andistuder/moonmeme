@@ -15,6 +15,10 @@ MOONMEME.store.createPerson = function (person) {
     var newPostKey = firebase.database().ref().child('people').push().key;
     var updates = {};
     updates['/people/' + newPostKey] = person;
+
+    MOONMEME.people.push(person);
+    MOONMEME.people = MOONMEME.people.sort(function(a, b){return a.date_ob-b.date_ob});
+
     return firebase.database().ref().update(updates);
 };
 

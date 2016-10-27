@@ -100,6 +100,9 @@ MOONMEME.parsePerson = function (form_data) {
 
 MOONMEME.printPeople = function (element_id) {
     var element = document.getElementById(element_id);
+    while (element.firstChild) {
+        element.removeChild(element.firstChild);
+    }
     this.people.forEach(function(person) {
         append_row(element, person, 365);
     });
