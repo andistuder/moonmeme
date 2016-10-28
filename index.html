@@ -74,23 +74,27 @@
 
         var form = document.forms.namedItem("user-form");
         form.addEventListener('submit', function(ev) {
-            MOONMEME.parsePerson(new FormData(form));
-            MOONMEME.updateMoonPic('moonpic', MOONMEME.person.image_id);
-            MOONMEME.hideElement('user-form');
-            MOONMEME.printSubmittedData('user-data', MOONMEME.person);
+            MOONMEME.parsePerson(new FormData(this));
+            this.reset();
+            MOONMEME.showPerson();
 
             setTimeout(function(){
-                MOONMEME.hideElement('sticky-footer');
-                MOONMEME.hideElement('center-container');
-                document.body.classList = ['year_tiles'];
-                MOONMEME.printPerson('tiles-container');
+                MOONMEME.showSingleRow();
             }, 5000);
 
             setTimeout(function(){
-                MOONMEME.printPeople('tiles-container');
+                MOONMEME.showAllRows();
+            }, 10000);
+
+            setTimeout(function(){
                 var audio = new Audio('audio/story.wav');
                 audio.play();
-            }, 10000);
+            }, 14000);
+
+            setTimeout(function(){
+              MOONMEME.showToday();
+            }, 35000);
+
             ev.preventDefault();
         }, false);
     </script>

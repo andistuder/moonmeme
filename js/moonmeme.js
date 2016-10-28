@@ -16,7 +16,76 @@ MOONMEME.preloadImages = function (element_id) {
         image_node.width = "1";
         element.appendChild(image_node);
     });
-}
+};
+
+MOONMEME.showPerson = function () {
+    this.hideElement('tiles-container');
+    document.body.classList = [];
+    this.showElement('sticky-footer');
+    this.showElement('center-container');
+
+    this.updateMoonPic('moonpic', this.person.image_id);
+    this.hideElement('user-form');
+    this.showElement('user-data');
+    this.printSubmittedData('user-data', this.person);
+};
+
+MOONMEME.showToday = function () {
+    this.hideElement('tiles-container');
+    document.body.classList = [];
+    this.showElement('sticky-footer');
+    this.showElement('center-container');
+
+    var image_id = this.moon.computeImageID(new Date());
+    this.updateMoonPic('moonpic', image_id);
+    this.hideElement('user-data');
+    this.showElement('user-form');
+};
+
+MOONMEME.showSingleRow = function () {
+    this.hideElement('sticky-footer');
+    this.hideElement('center-container');
+    document.body.classList = ['year_tiles'];
+
+    this.printPerson('tiles-container');
+    this.showElement('tiles-container');
+};
+
+MOONMEME.showAllRows = function () {
+    this.hideElement('sticky-footer');
+    this.hideElement('center-container');
+    document.body.classList = ['year_tiles'];
+
+    this.printPeople('tiles-container');
+    this.showElement('tiles-container');
+};
+
+
+MOONMEME.parsePerson = function (form_data) {
+
+    var dob = form_data.get('year') + '-' +
+        form_data.get('month') + '-' +
+        form_data.get('day');
+
+    if (form_data.get('minute') && form_data.get('hour')) {
+        dob = dob + ' ' +
+            ('0' + form_data.get('hour')).slice(-2) + ':' +
+            ('0' + form_data.get('minute')).slice(-2);
+    }
+
+    var date_ob = new Date(dob);
+
+    this.person = {
+        dob: dob,
+        name: form_data.get('name'),
+        date_ob: date_ob,
+        image_id: this.moon.computeImageID(date_ob)
+    };
+
+    this.people.push(this.person);
+    this.people = this.people.sort(function(a, b){return a.date_ob-b.date_ob});
+    this.store.createPerson(this.person);
+};
 
 MOONMEME._print_row = function (person, row_length) {
     var row_node = document.createElement('div');
@@ -52,34 +121,11 @@ MOONMEME._append_personal_details = function (row_node, person) {
     row_node.appendChild(node);
 };
 
-MOONMEME.parsePerson = function (form_data) {
-
-    var dob = form_data.get('year') + '-' +
-        form_data.get('month') + '-' +
-        form_data.get('day');
-
-    if (form_data.get('minute') && form_data.get('hour')) {
-        dob = dob + ' ' +
-            ('0' + form_data.get('hour')).slice(-2) + ':' +
-            ('0' + form_data.get('minute')).slice(-2);
-    }
-
-    var date_ob = new Date(dob);
-
-    this.person = {
-        dob: dob,
-        name: form_data.get('name'),
-        date_ob: date_ob,
-        image_id: this.moon.computeImageID(date_ob)
-    };
-
-    this.people.push(this.person);
-    this.people = this.people.sort(function(a, b){return a.date_ob-b.date_ob});
-    this.store.createPerson(this.person);
-};
-
 MOONMEME.printPerson = function (element_id) {
     var element = document.getElementById(element_id);
+    while (element.firstChild) {
+        element.removeChild(element.firstChild);
+    }
     this._append_row(element, this.person, 365);
 };
 
@@ -100,10 +146,17 @@ MOONMEME.updateMoonPic = function (element_id, image_id) {
 };
 
 MOONMEME.printSubmittedData = function (element_id, person) {
-    var footer_element = document.getElementById(element_id);
-    this._append_personal_details(footer_element, person);
+    var element = document.getElementById(element_id);
+    while (element.firstChild) {
+        element.removeChild(element.firstChild);
+    }
+    this._append_personal_details(element, person);
 };
 
 MOONMEME.hideElement = function (element_id) {
     document.getElementById(element_id).style.display = 'none';
+};
+
+MOONMEME.showElement = function (element_id) {
+    document.getElementById(element_id).style.display = 'inline';
 };
