@@ -22,7 +22,7 @@ MOONMEME.store.createPerson = function (person) {
 MOONMEME.store.createInitialSetOfPeople = function () {
     var people = all_people();
     people.forEach(function(person) {
-        console.log(this.createPerson(person));
+        console.log(MOONMEME.store.createPerson(person));
     });
 };
 
