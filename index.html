@@ -71,6 +71,8 @@
         MOONMEME.init();
         MOONMEME.store.init();
         MOONMEME.store.loadPeople();
+        var audio = new Audio('audio/she.wav');
+        audio.play();
 
         var form = document.forms.namedItem("user-form");
         form.addEventListener('submit', function(ev) {
@@ -80,20 +82,15 @@
 
             setTimeout(function(){
                 MOONMEME.showSingleRow();
-            }, 5000);
+            }, 20000);
 
             setTimeout(function(){
                 MOONMEME.showAllRows();
-            }, 10000);
+            }, 40000);
 
             setTimeout(function(){
-                var audio = new Audio('audio/story.wav');
-                audio.play();
-            }, 14000);
-
-            setTimeout(function(){
-              MOONMEME.showToday();
-            }, 35000);
+                MOONMEME.showToday();
+            }, 60000);
 
             ev.preventDefault();
         }, false);
