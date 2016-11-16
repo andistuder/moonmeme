@@ -17,6 +17,14 @@ body {
   top: -24px; left: 0; bottom: 0; right: 0;
 }
 
+.vertical_center {
+  height: 56px;
+  width: 14700px;
+  margin: auto 5px;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+}
+
 #sticky-footer {
   position:absolute;
   bottom:10px;
