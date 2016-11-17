@@ -26,6 +26,7 @@
             </tr>
         </table>
     </div>
+    <button class='button' id='show-today-button' type=submit name="submit" value="Today" size=3 style='display: none;'>Show Today</button>
     <div id='sticky-footer'>
         <form name="user-form" enctype="multipart/form-data" id="user-form" action="" method="post">
             <p>INPUT YOUR BIRTH DATA TO SEE YOUR LUNAR BIRTH PORTRAIT:</p>
@@ -88,12 +89,13 @@
 
             setTimeout(function(){
                 MOONMEME.showAllRows();
-            }, 40000);
+            }, 70000);
 
-            setTimeout(function(){
-                MOONMEME.showToday();
-            }, 60000);
+            ev.preventDefault();
+        }, false);
 
+        document.getElementById("show-today-button").addEventListener("click", function(ev){
+            MOONMEME.showToday();
             ev.preventDefault();
         }, false);
     </script>
