@@ -29,7 +29,7 @@
     <button class='button' id='show-today-button' type=submit name="submit" value="Today" size=3 style='display: none;'>Show Today</button>
     <div id='sticky-footer'>
         <form name="user-form" enctype="multipart/form-data" id="user-form" action="" method="post">
-            <p>INPUT YOUR BIRTH DATA TO SEE YOUR LUNAR BIRTH PORTRAIT:</p>
+            <p>INPUT YOUR BIRTH DATA TO SEE YOUR LUNAR BIRTH PORTRAIT (<a id='myBtn' href='#'>MORE INFO</a>):</p>
             <div class="form-control">
                 <label for="name">Name</label>
                 <br>
@@ -62,6 +62,36 @@
             </div>
             <input class='button' id='user-dob-submit' type=submit name="submit" value="Submit" size=3>
         </form>
+
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+
+      <!-- Modal content -->
+      <div class="modal-content">
+        <div class="modal-header">
+        <span class="close">×</span>
+          <h2>Moonmeme</h2>
+        </div>
+        <div class="modal-body">
+          <p>
+            The feminine personal pronoun S H E is projected onto the face of the moon. The meaning of this word will be gradually altered over the 29.5 day lunation period by the relative motions of Moon, Earth and Sun. The moving image tracks the real moon’s phase. The image updates every 26 hours and 13 minutes.
+          </p>
+
+          <ol>
+            <li>Insert your name and birthdate to see your lunar birth portrait.</li>
+            <li>After 20 seconds the program will show you the lunar cycles of your first year.</li>
+            <li>After 30 seconds your first lunar year will be placed chronologically within all birth data received so far. Zoom in and out of the data to see it enlarged in detail or as an overall pattern.</li>
+            <li>Press SHOW TODAY when you are finished.</li>
+          </ol>
+
+          <p>By submitting your name and date of birth, you aggree to have the data stored and shown to the public.</p>
+        </div>
+        <!-- <div class="modal-footer">
+          <h3>Modal Footer</h3>
+        </div> -->
+      </div>
+
+    </div>
         <div id='user-data'></div>
     </div>
 
@@ -98,6 +128,34 @@
             MOONMEME.showToday();
             ev.preventDefault();
         }, false);
+
+
+
+        // Get the modal
+        var modal = document.getElementById('myModal');
+
+        // Get the button that opens the modal
+        var btn = document.getElementById("myBtn");
+
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+
+        // When the user clicks the button, open the modal
+        btn.onclick = function() {
+            modal.style.display = "block";
+        }
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
     </script>
 
     <!-- <script type="text/javascript" src="data/portrait_data.js"></script>
