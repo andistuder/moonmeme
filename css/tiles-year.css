@@ -167,11 +167,15 @@ div#preloader {
 
 .modal-header {
     padding: 2px 16px;
-    background-color: #5cb85c;
+    background-color: blue;
     color: white;
 }
 
-.modal-body {padding: 2px 16px;}
+.modal-body {
+    padding: 2px 16px;
+    color: #666;
+    line-height: 1.5em;
+}
 
 .modal-footer {
     padding: 2px 16px;
