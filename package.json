@@ -1,0 +1,26 @@
+{
+  "name": "moonmeme",
+  "version": "1.0.0",
+  "description": "This project is an adaptation of Liliane Lijn's [Moonmeme](http://www.lilianelijn.com/portfolio-item/moonmeme/) artwork to a stand-alone audio-visual installation.",
+  "main": "server/server.js",
+  "dependencies": {
+    "httpdispatcher": "^2.0.1",
+    "jsonfile": "^2.4.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node server/server.js",
+    "import_data": "node server/import_data.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andistuder/moonmeme.git"
+  },
+  "author": "Liliane Lijn & Andi Studer",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/andistuder/moonmeme/issues"
+  },
+  "homepage": "https://github.com/andistuder/moonmeme"
+}

@@ -1,4 +1,4 @@
-function all_people() {
+module.exports.all_people = function all_people() {
     return [{
             name: 'Josephine',
             dob: '1935-5-3'
