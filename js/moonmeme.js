@@ -22,12 +22,13 @@ MOONMEME.showPerson = function () {
     this.hideElement('single-row-container');
     this.hideElement('tiles-container');
     this.hideElement('show-today-button');
+    this.hideElement('myModal');
     document.body.classList = [];
     this.showElement('sticky-footer');
     this.showElement('center-container');
 
     this.updateMoonPic('moonpic', this.person.image_id);
-    this.hideElement('user-form');
+    this.hideElement('input-text');
     this.showElement('user-data');
     this.printSubmittedData('user-data', this.person);
 };
@@ -43,7 +44,7 @@ MOONMEME.showToday = function () {
     var image_id = this.moon.computeImageID(new Date());
     this.updateMoonPic('moonpic', image_id);
     this.hideElement('user-data');
-    this.showElement('user-form');
+    this.showElement('input-text');
 };
 
 MOONMEME.showSingleRow = function () {
