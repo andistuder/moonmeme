@@ -112,7 +112,7 @@ div#preloader {
   padding: 2px 6px 3px 6px;
 }
 
-#show-today-button {
+#show-today-button, #show-today-button-top {
   margin: 12px;
 }
 

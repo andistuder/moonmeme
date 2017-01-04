@@ -22,6 +22,7 @@ MOONMEME.showPerson = function () {
     this.hideElement('single-row-container');
     this.hideElement('tiles-container');
     this.hideElement('show-today-button');
+    this.hideElement('show-today-button-top');
     this.hideElement('myModal');
     document.body.classList = [];
     this.showElement('sticky-footer');
@@ -37,6 +38,7 @@ MOONMEME.showToday = function () {
     this.hideElement('single-row-container');
     this.hideElement('tiles-container');
     this.hideElement('show-today-button');
+    this.hideElement('show-today-button-top');
     document.body.classList = [];
     this.showElement('sticky-footer');
     this.showElement('center-container');
@@ -52,6 +54,7 @@ MOONMEME.showSingleRow = function () {
     this.hideElement('center-container');
     this.hideElement('tiles-container');
     this.hideElement('show-today-button');
+    this.hideElement('show-today-button-top');
     document.body.classList = ['year_tiles'];
 
     this.printPerson('single-row-container');
@@ -67,6 +70,7 @@ MOONMEME.showAllRows = function () {
     this.printPeople('tiles-container');
     this.showElement('tiles-container');
     this.showElement('show-today-button');
+    this.showElement('show-today-button-top');
 };
 
 

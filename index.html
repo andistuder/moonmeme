@@ -13,6 +13,7 @@
 <body>
     <div id="preloader">
     </div>
+    <button class='button' id='show-today-button-top' type=submit name="submit" value="Today" size=3 style='display: none;'>Show Today</button>
     <div id='single-row-container' class='vertical_center'>
     </div>
     <div id='tiles-container'>
@@ -131,7 +132,10 @@
             ev.preventDefault();
         }, false);
 
-
+        document.getElementById("show-today-button-top").addEventListener("click", function(ev){
+            MOONMEME.showToday();
+            ev.preventDefault();
+        }, false);
 
         // Get the modal
         var modal = document.getElementById('myModal');
