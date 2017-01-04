@@ -4,6 +4,24 @@ MOONMEME.init = function () {
     this.preloadImages('preloader');
     var image_id = this.moon.computeImageID(new Date());
     this.updateMoonPic('moonpic', image_id);
+    this.audio = new Audio();
+    this.play_she();
+};
+
+MOONMEME.play_she = function() {
+    this.audio.src = 'audio/she-pause.wav';
+    this.audio.loop = true;
+    this.audio.load();
+    this.audio.volume = 0.2;
+    this.audio.play();
+};
+
+MOONMEME.play_story = function() {
+    this.audio.src = 'audio/storywointro.wav';
+    this.audio.loop = false;
+    this.audio.load();
+    this.audio.volume = 1;
+    this.audio.play();
 };
 
 MOONMEME.preloadImages = function (element_id) {

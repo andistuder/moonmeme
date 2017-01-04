@@ -107,8 +107,6 @@
         MOONMEME.init();
         MOONMEME.store.init();
         MOONMEME.store.loadPeople();
-        var audio = new Audio('audio/she.wav');
-        audio.play();
 
         var form = document.forms.namedItem("user-form");
         form.addEventListener('submit', function(ev) {
@@ -122,6 +120,7 @@
 
             setTimeout(function(){
                 MOONMEME.showAllRows();
+                MOONMEME.play_story();
             }, 70000);
 
             ev.preventDefault();
@@ -129,11 +128,13 @@
 
         document.getElementById("show-today-button").addEventListener("click", function(ev){
             MOONMEME.showToday();
+            MOONMEME.play_she();
             ev.preventDefault();
         }, false);
 
         document.getElementById("show-today-button-top").addEventListener("click", function(ev){
             MOONMEME.showToday();
+            MOONMEME.play_she();
             ev.preventDefault();
         }, false);
 
