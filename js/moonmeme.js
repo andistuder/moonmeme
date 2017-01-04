@@ -135,7 +135,7 @@ MOONMEME.printPerson = function (element_id) {
     while (element.firstChild) {
         element.removeChild(element.firstChild);
     }
-    this._append_row(element, this.person, 365);
+    this._append_row(element, this.person, 177);
 };
 
 MOONMEME.printPeople = function (element_id) {
@@ -144,7 +144,7 @@ MOONMEME.printPeople = function (element_id) {
         element.removeChild(element.firstChild);
     }
     this.people.forEach(function(person) {
-        MOONMEME._append_row(element, person, 365);
+        MOONMEME._append_row(element, person, 177);
     });
 };
 
