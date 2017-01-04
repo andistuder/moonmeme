@@ -38,6 +38,7 @@ body {
 
 #sticky-footer p a, #sticky-footer p a:hover, #sticky-footer p a:visited {
   color: red;
+  text-decoration: none;
 }
 
 body.year_tiles {
@@ -76,6 +77,10 @@ div#preloader {
   overflow: hidden;
 }
 
+#user-form {
+  margin-bottom: 20px;
+}
+
 .form-control {
   display: inline-block;
   line-height: 1.4em;
@@ -96,7 +101,10 @@ div#preloader {
 
 .button {
   display: inline-block;
+  color: red;
+  text-transform: uppercase;
   font-size: 1em;
+  cursor: pointer;
   text-align: center;
   white-space: nowrap;
   vertical-align: middle;
@@ -152,7 +160,6 @@ div#preloader {
 
 /* The Close Button */
 .close {
-    color: white;
     float: right;
     font-size: 28px;
     font-weight: bold;
@@ -167,8 +174,7 @@ div#preloader {
 
 .modal-header {
     padding: 2px 16px;
-    background-color: blue;
-    color: white;
+    color: #666;
 }
 
 .modal-body {
