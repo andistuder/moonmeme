@@ -17,7 +17,7 @@ function handleRequest(request, response){
 }
 
 dispatcher.onGet("/people", function(req, res) {
-    res.writeHead(200, {'Content-Type': 'application/json'});
+    res.writeHead(200, {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'});
 
     var allPeople = jsonfile.readFileSync(data_file);
 
@@ -25,7 +25,8 @@ dispatcher.onGet("/people", function(req, res) {
 });
 
 dispatcher.onPost("/people", function(req, res) {
-    res.writeHead(200, {'Content-Type': 'application/json'});
+    // CHANGE this ot accept form data
+    res.writeHead(200, {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'});
 
     jsonfile.readFile(data_file, function(err, obj) {
         var allPeople = obj;
