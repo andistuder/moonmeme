@@ -6,6 +6,11 @@ sudo apt-get update
 sudo apt-get install midori
 sudo apt-get install unclutter
 
+echo 'installing node and dependencies'
+wget https://nodejs.org/download/release/v0.10.0/node-v0.10.0-linux-arm-pi.tar.gz
+cd /usr/local && sudo tar xzvf ~/node-v0.10.0-linux-arm-pi.tar.gz --strip=1
+cd /home/pi/Documents/moonmeme/ && npm install
+
 echo  'installing dependencies to enable RTC'
 sudo apt-get install python-smbus
 sudo apt-get install i2c-tools

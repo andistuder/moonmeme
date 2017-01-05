@@ -5,4 +5,5 @@
 @xset -dpms
 @xset s noblank
 @unclutter -idle 0 -root
+@cd /home/pi/Documents/moonmeme/ && nohup npm start &
 @midori -e Fullscreen -a /home/pi/Documents/moonmeme/index.html
