@@ -12,7 +12,7 @@ MOONMEME.play_she = function() {
     this.audio.src = 'audio/she-pause.wav';
     this.audio.loop = true;
     this.audio.load();
-    this.audio.volume = 0.2;
+    this.audio.volume = 0.5;
     this.audio.play();
 };
 
@@ -20,7 +20,7 @@ MOONMEME.play_story = function() {
     this.audio.src = 'audio/storywointro.wav';
     this.audio.loop = false;
     this.audio.load();
-    this.audio.volume = 1;
+    this.audio.volume = 0.4;
     this.audio.play();
 };
 
