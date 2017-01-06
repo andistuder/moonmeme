@@ -4,8 +4,8 @@
   "description": "This project is an adaptation of Liliane Lijn's [Moonmeme](http://www.lilianelijn.com/portfolio-item/moonmeme/) artwork to a stand-alone audio-visual installation.",
   "main": "server/server.js",
   "dependencies": {
-    "httpdispatcher": "^2.0.1",
-    "jsonfile": "^2.4.0"
+    "httpdispatcher": "2.0.1",
+    "jsonfile": "2.4.0"
   },
   "devDependencies": {},
   "scripts": {
