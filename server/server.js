@@ -3,7 +3,8 @@ var httpDispatcher = require('httpdispatcher');
 var dispatcher = new httpDispatcher();
 
 var jsonfile = require('jsonfile')
-var data_file = 'data/portrait_data.json'
+const path = require('path');
+var data_file = path.join(__dirname, '../data/portrait_data.json');
 
 const PORT=8080;
 
