@@ -13,10 +13,7 @@ MOONMEME.store.init = function () {
 
 MOONMEME.store.createPerson = function (person) {
     var record = { dob: person.dob, name: person.name };
-    // var newPostKey = firebase.database().ref().child('people').push().key;
-    // var updates = {};
-    // updates['/people/' + newPostKey] = record;
-    // return firebase.database().ref().update(updates);
+    this.httpPostAsync('http://localhost:8080/people', record, function(){console.log('ok')})
 };
 
 MOONMEME.store.createInitialSetOfPeople = function () {
@@ -61,8 +58,18 @@ MOONMEME.store.httpGetAsync = function httpGetAsync(theUrl, callback) {
     xmlHttp.send(null);
 };
 
-MOONMEME.store.httpPostAsync = function httpPostAsync(theUrl, payload, callback) {
+MOONMEME.store.httpPostAsync = function httpPostAsync(theUrl, data, callback) {
     var xmlHttp = new XMLHttpRequest();
+    var urlEncodedData = "";
+    var urlEncodedDataPairs = [];
+    var name;
+
+    for(name in data) {
+      urlEncodedDataPairs.push(encodeURIComponent(name) + '=' + encodeURIComponent(data[name]));
+    }
+
+    urlEncodedData = urlEncodedDataPairs.join('&').replace(/%20/g, '+');
+
     xmlHttp.onreadystatechange = function() {
         console.log('Call: ' + theUrl + ' Status: ' + xmlHttp.status);
         if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
@@ -70,9 +77,6 @@ MOONMEME.store.httpPostAsync = function httpPostAsync(theUrl, payload, callback)
         }
     }
     xmlHttp.open("POST", theUrl, true); // true for asynchronous
-    xmlHttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-    xmlHttp.send(JSON.stringify(payload));
+    xmlHttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xmlHttp.send(urlEncodedData);
 };
-// 
-// https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Forms/Sending_forms_through_JavaScript
-// http://stackoverflow.com/questions/29954037/how-to-disable-options-request

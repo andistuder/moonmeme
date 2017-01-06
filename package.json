@@ -5,7 +5,8 @@
   "main": "server/server.js",
   "dependencies": {
     "httpdispatcher": "2.0.1",
-    "jsonfile": "2.4.0"
+    "jsonfile": "2.4.0",
+    "qs": "6.3.0"
   },
   "devDependencies": {},
   "scripts": {

@@ -1,6 +1,7 @@
 var http = require('http');
 var httpDispatcher = require('httpdispatcher');
 var dispatcher = new httpDispatcher();
+var qs = require('qs');
 
 var jsonfile = require('jsonfile')
 const path = require('path');
@@ -10,7 +11,6 @@ const PORT=8080;
 
 function handleRequest(request, response){
     try {
-        // console.log(request.url);
         dispatcher.dispatch(request, response);
     } catch(err) {
         console.log(err);
@@ -26,18 +26,18 @@ dispatcher.onGet("/people", function(req, res) {
 });
 
 dispatcher.onPost("/people", function(req, res) {
-    // CHANGE this ot accept form data
-    res.writeHead(200, {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'});
+    console.log('POST received: ' + req.body);
+    res.writeHead(200, {'Content-Type': 'application/x-www-form-urlencoded', 'Access-Control-Allow-Origin': '*'});
 
     jsonfile.readFile(data_file, function(err, obj) {
         var allPeople = obj;
-        var newPerson = JSON.parse(req.body);
+        var newPerson = qs.parse(req.body);
         allPeople.push(newPerson);
         jsonfile.writeFile(data_file, allPeople, {spaces: 4}, function (err) {
-          console.log(err)
-        })
-    })
-    res.end(JSON.stringify({status: 'submitted'}));
+          console.log(err);
+        });
+    });
+    res.end();
 });
 
 var server = http.createServer(handleRequest);
