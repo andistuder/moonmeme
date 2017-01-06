@@ -10,6 +10,7 @@ echo 'installing node and dependencies'
 wget https://nodejs.org/download/release/v0.10.0/node-v0.10.0-linux-arm-pi.tar.gz
 cd /usr/local && sudo tar xzvf ~/node-v0.10.0-linux-arm-pi.tar.gz --strip=1
 cd /home/pi/Documents/moonmeme/ && npm install
+node /home/pi/Documents/moonmeme/server/import_data.js
 
 echo  'installing dependencies to enable RTC'
 sudo apt-get install python-smbus
