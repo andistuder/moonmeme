@@ -9,7 +9,7 @@ MOONMEME.init = function () {
 };
 
 MOONMEME.play_she = function() {
-    this.audio.src = 'audio/she-pause.wav';
+    this.audio.src = 'audio/she-pause.mp3';
     this.audio.loop = true;
     this.audio.load();
     this.audio.volume = 0.5;
@@ -17,7 +17,7 @@ MOONMEME.play_she = function() {
 };
 
 MOONMEME.play_story = function() {
-    this.audio.src = 'audio/storywointro.wav';
+    this.audio.src = 'audio/storywointro.mp3';
     this.audio.loop = false;
     this.audio.load();
     this.audio.volume = 0.4;
