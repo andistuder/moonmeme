@@ -3,12 +3,13 @@ set -e
 
 echo 'installing midori and unclutter'
 sudo apt-get update
+sudo apt-get install xz-utils
 sudo apt-get install midori
 sudo apt-get install unclutter
 
 echo 'installing node and dependencies'
-wget https://nodejs.org/download/release/v0.10.0/node-v0.10.0-linux-arm-pi.tar.gz
-cd /usr/local && sudo tar xzvf ~/node-v0.10.0-linux-arm-pi.tar.gz --strip=1
+wget https://nodejs.org/dist/v6.9.4/node-v6.9.4-linux-armv6l.tar.xz
+cd /usr/local && sudo tar xz ~/node-v6.9.4-linux-armv6l.tar.xz --strip=1
 cd /home/pi/Documents/moonmeme/ && npm install
 node /home/pi/Documents/moonmeme/server/import_data.js
 
