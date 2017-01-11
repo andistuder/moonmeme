@@ -1,48 +1,32 @@
 # Moonmeme
 
-This project is an adaptation of Liliane Lijn's [Moonmeme](http://www.lilianelijn.com/portfolio-item/moonmeme/) artwork to a stand-alone audio-visual installation.
+This project is an adaptation of Liliane Lijn's [Moonmeme](http://www.lilianelijn.com/portfolio-item/moonmeme/) artwork to a web-based as well as stand-alone audio-visual installation.
 
-## Prerequisites
-- a Raspberry Pi, model A+ works well
-- a Real Time Clock module
-- a screen, cables, keyboard
+## Versions
+The stand-alone version is maintained in the Git branch `master`.
 
-## Setup
+The web-based is hosted on [GitHub Pages](http://andistuder.github.io/moonmeme). The source code is maintained in the `gh-pages` Git branch.
 
-in raspi-config
-- set to boot to graphic user interface
 
-get source files
+## Web-based installation
 
-```
-git clone https://github.com/andistuder/moonmeme.git /home/pi/Documents/moonmeme
-```
-cd to folder with source files and run
+### Prerequisites
 
-```
-./bin/setup.sh
-```
+A computer with
+- screen, mouse and keyboard
+- speakers
+- Internet access
+- Chrome Browser version 50 and above.
 
-### Audio
+### Setup
 
-Set in `raspi-config` or edit `/bin/config.txt`
-
-More details in
-https://www.raspberrypi.org/documentation/configuration/audio-config.md
-
-### Real Time Clock
-
-https://learn.adafruit.com/adafruits-raspberry-pi-lesson-4-gpio-setup/configuring-i2c
-
-http://thepihut.com/blogs/raspberry-pi-tutorials/17209332-adding-a-real-time-clock-to-your-raspberry-pi
-
-## Boot
-
-Plug and play.
+0. Open Chrome
+0. Visit http://andistuder.github.io/moonmeme
+0. Enter Full Screen mode (on Mac: CTRL+CMD+F)
 
 ## Troubleshooting
 
-Unplug, count to 5, plug and play.
+Close Chrome browser, reboot the computer.
 
 ## License
 
