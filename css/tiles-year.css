@@ -9,8 +9,8 @@ body {
 }
 
 .absolute_center {
-  width: 50%;
-  height: 50%;
+  width: 640px;
+  height: 640px;
   overflow: auto;
   margin: auto;
   position: absolute;
