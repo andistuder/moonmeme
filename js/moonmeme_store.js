@@ -1,4 +1,6 @@
 MOONMEME.store = {};
+MOONMEME.store.path = 'people';
+MOONMEME.store.maxRows = 125;
 
 MOONMEME.store.init = function () {
     var config = {
@@ -13,26 +15,28 @@ MOONMEME.store.init = function () {
 
 MOONMEME.store.createPerson = function (person) {
     var record = { dob: person.dob, name: person.name };
-    var newPostKey = firebase.database().ref().child('people').push().key;
+    var newPostKey = firebase.database().ref().child(MOONMEME.store.path).push().key;
     var updates = {};
-    updates['/people/' + newPostKey] = record;
+    updates['/'+ MOONMEME.store.path + '/' + newPostKey] = record;
     return firebase.database().ref().update(updates);
 };
 
 MOONMEME.store.createInitialSetOfPeople = function () {
     var people = all_people();
     people.forEach(function(person) {
-        console.log(MOONMEME.store.createPerson(person));
+        console.log('createInitialSetOfPeople', MOONMEME.store.createPerson(person));
     });
 };
 
 MOONMEME.store.loadPeople = function (element_id) {
-    firebase.database().ref().on("value", function(snapshot) {
-        var records = snapshot.val().people
+    firebase.database().ref(MOONMEME.store.path).on("value", function(snapshot) {
+        var records = snapshot.val();
         var people = [];
         var record;
         var dob_string;
-        for (var key in records) {
+        var keys = Object.keys(records);
+
+        keys.slice(Math.max(keys.length - MOONMEME.store.maxRows, 1)).forEach(function(key) {
             record = records[key];
             dob_string = (record.dob.length < 11) ? record.dob + ' 12:00' : record.dob;
 
@@ -40,13 +44,13 @@ MOONMEME.store.loadPeople = function (element_id) {
             record.image_id = MOONMEME.moon.computeImageID(record.date_ob);
 
             people.push(record);
-        }
+        });
 
-        MOONMEME.people = people.sort(function(a, b){return a.date_ob-b.date_ob});
-        if (element_id) {
-            MOONMEME.printPeople(element_id);
-        }
+        MOONMEME.people = people.sort(function(a, b) {
+            return a.date_ob - b.date_ob;
+        });
+        if (element_id) MOONMEME.printPeople(element_id);
     }, function(errorObject) {
-        console.log("The read failed: " + errorObject.code);
+        console.error("The read failed: " + errorObject.code);
     });
 };
