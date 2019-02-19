@@ -32,9 +32,16 @@ https://www.raspberrypi.org/documentation/configuration/audio-config.md
 
 ### Real Time Clock
 
+Currently, a Adafruit PiRTC - PCF8523 Real Time Clock for Raspberry Pi is used.
+
+First setup i2c:
+
 https://learn.adafruit.com/adafruits-raspberry-pi-lesson-4-gpio-setup/configuring-i2c
 
-http://thepihut.com/blogs/raspberry-pi-tutorials/17209332-adding-a-real-time-clock-to-your-raspberry-pi
+and the the clock itself:
+Note the current hardware is running Raspbian Wheezy. Refer to relevant section in setup, but replace ds1307 with pcf8523
+
+`setup/adding-a-real-time-clock-to-raspberry-pi.pdf`
 
 ## Boot
 
