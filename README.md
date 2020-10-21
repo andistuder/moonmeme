@@ -22,7 +22,7 @@ A computer with
 
 0. Open Chrome
 0. Visit http://andistuder.github.io/moonmeme
-0. Enter Full Screen mode (on Mac: CTRL+CMD+F)
+0. Enter Full Screen mode (on Mac: CTRL+CMD+F) or start `/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --app="https://andistuder.github.io/moonmeme/" --kiosk`
 
 ## Troubleshooting
 
