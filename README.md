@@ -24,6 +24,12 @@ A computer with
 0. Visit http://andistuder.github.io/moonmeme
 0. Enter Full Screen mode (on Mac: CTRL+CMD+F) or start `/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --app="https://andistuder.github.io/moonmeme/" --kiosk`
 
+### Development
+
+A stating environment is avaiable
+Code: https://github.com/andistuder/moonmeme-staging
+View: https://andistuder.github.io/moonmeme-staging/ (for branch `gh-pages-staging`)
+
 ## Troubleshooting
 
 Close Chrome browser, reboot the computer.
@@ -31,12 +37,5 @@ Close Chrome browser, reboot the computer.
 ## License
 
 Unauthorised reproduction infringes copyright.
-
-allow people to enter their name and DoB:
-at the bottom of a lunar tiles page.
-
-Save it and the scroll the page to the right name.
-
-Maybe think of a keyboard short cut to zoom out to max  (done with JS. )
 
 © 2016 Liliane Lijn
