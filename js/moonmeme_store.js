@@ -3,6 +3,7 @@ MOONMEME.store.path = 'people';
 MOONMEME.store.maxRows = 125;
 
 MOONMEME.store.init = function () {
+    MOONMEME.store.path = (window.location.pathname.indexOf('/moonmeme/') == 0) ? 'people' : 'people_staging';
     var config = {
         apiKey: "AIzaSyBAc-y_cSMAKD3O2veGCoOXPX1Lck_03lI",
         authDomain: "moonmeme-d632f.firebaseapp.com",
@@ -34,6 +35,10 @@ MOONMEME.store.loadPeople = function (element_id) {
         var people = [];
         var record;
         var dob_string;
+        if (!records) {
+            MOONMEME.people = [];
+            return;
+        }
         var keys = Object.keys(records);
 
         keys.slice(Math.max(keys.length - MOONMEME.store.maxRows, 1)).forEach(function(key) {
