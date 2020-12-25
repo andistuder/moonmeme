@@ -115,7 +115,9 @@ MOONMEME.parsePerson = function (form_data) {
 
     this.people.push(this.person);
     this.people = this.people.sort(function(a, b){return a.date_ob-b.date_ob});
-    this.store.createPerson(this.person);
+    this.store.createPerson(this.person).catch(e => {
+        console.error("Create Person failed: " + e.message);
+    });
 };
 
 MOONMEME._print_row = function (person, row_length) {
