@@ -5,7 +5,7 @@ This project is an adaptation of Liliane Lijn's [Moonmeme](http://www.lilianelij
 ## Versions
 The stand-alone version is maintained in the Git branch `master`.
 
-The web-based is hosted on [GitHub Pages](http://andistuder.github.io/moonmeme). The source code is maintained in the `gh-pages` Git branch.
+The web-based is hosted on [GitHub Pages](https://andistuder.github.io/moonmeme/). The source code is maintained in the `gh-pages` Git branch.
 
 
 ## Web-based installation
@@ -21,7 +21,7 @@ A computer with
 ### Setup
 
 0. Open Chrome
-0. Visit http://andistuder.github.io/moonmeme
+0. Visit https://andistuder.github.io/moonmeme/
 0. Enter Full Screen mode (on Mac: CTRL+CMD+F) or start `/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --app="https://andistuder.github.io/moonmeme/" --kiosk`
 
 ### Development
