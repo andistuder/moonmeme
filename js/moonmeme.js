@@ -5,10 +5,11 @@ MOONMEME.init = function () {
     var image_id = this.moon.computeImageID(new Date());
     this.updateMoonPic('moonpic', image_id);
     this.audio = new Audio();
-    this.play_she();
 };
 
 MOONMEME.play_she = function() {
+    if (this.audio.src.indexOf('she-pause.mp3') != -1) return;
+
     this.audio.src = 'audio/she-pause.mp3';
     this.audio.loop = true;
     this.audio.load();
